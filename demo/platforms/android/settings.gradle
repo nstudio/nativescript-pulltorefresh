@@ -1,0 +1,5 @@
+rootProject.name = "pulltorefresh"
+include "asbg", "ing", "bg"
+project(":asbg").projectDir = file("build-tools/android-static-binding-generator")
+project(":ing").projectDir = file("build-tools/android-static-binding-generator/interface-name-generator")
+project(":bg").projectDir = file("build-tools/android-static-binding-generator/binding-generator")

@@ -1,0 +1,20 @@
+<page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:PullRefreshLayout="nativescript-pulltorefresh"
+      loaded="pageLoaded">
+
+    <page.actionBar>
+        <action-bar title="Pull to Refresh?" backgroundColor="#009688" color="#f1f1f1" android.icon="res://ic_test"/>
+    </page.actionBar>
+
+        <PullRefreshLayout:PullToRefresh loaded="swipeLoaded" onRefresh="refreshMe" color="#3489db">
+            <stack-layout>
+                <list-view items="{{ users }}"
+                                      itemTap="accountOptionTap">
+                    <ListView.itemTemplate>
+                        <label text="{{ name }}" textWrap="true" class="title" />
+                    </ListView.itemTemplate>
+                </list-view>
+            </stack-layout>
+        </PullRefreshLayout:PullToRefresh>
+    
+</page>
