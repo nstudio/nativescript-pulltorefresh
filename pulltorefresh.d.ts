@@ -1,13 +1,18 @@
 ﻿/**
- * Contains the CardView class, which represents a FrameLayout with a rounded corner background and shadow.
+ * Contains the PullToRefresh class, which represents a Layout that contains the UI pattern for pull-to-refresh
  */
 declare module "pulltorefresh" {
     import view = require("ui/core/view");
      
     /**
-     * Represents a standard CardView widget.
+     * Represents a standard PullToRefresh Layout
      */
     export class PullToRefresh extends view.View implements view.AddChildFromBuilder {
+
+        /**
+         * String value used when hooking to the onRefresh event.
+         */
+        public static onRefreshEvent: string;
        
         /**
          * Gets the native [android widget](http://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html) that represents the user interface for this component. Valid only when running on Android OS.
@@ -20,19 +25,24 @@ declare module "pulltorefresh" {
         onRefreshListener: any; /* android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener */
 
         /*
+        * Gets or sets the color to use in the progress animation
+        */
+        color: any;
+
+        /*
         * Gets or sets if the view is refreshing
         */
         isRefreshing: boolean;
 
         /*
-        * Gets or sets if the view is refreshing
+        * Notify the widget that refresh state has changed.
         */
         setRefreshing: boolean;
 
         /**
-         * Raised when a tap event occurs.
+         * Raised when a refresh event occurs.
          */
-        on(event: "refresh", callback: (args: observable.EventData) => void, thisArg?: any);
+        on(event: "onRefresh", callback: (args: observable.EventData) => void, thisArg?: any);
 
 
         /**
@@ -43,4 +53,21 @@ declare module "pulltorefresh" {
         */
         _addChildFromBuilder(name: string, value: any): void;
     }
+
+    ///**
+    //* Provides common options for creating the PullToRefresh
+    //*/
+    //export interface Options extends view.Options {
+
+    //    /*
+    //   * Gets or sets the color to use in the progress animation
+    //   */
+    //    color: any;
+
+    //    /*
+    //    * Gets or sets the event that executes when the refresh is initiated.
+    //    */
+    //    onRefresh: string;
+    //}
+
 }

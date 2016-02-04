@@ -31,6 +31,10 @@ var PullToRefresh = (function (_super) {
             this._androidViewId = android.view.View.generateViewId();
         }
         this._android.setId(this._androidViewId);
+        //if (this.color) {
+        //    //var Color = android.graphics.Color;
+        //    this._android.setColorSchemeColors(this.color.android, this.color.android, this.color.android, this.color.android);
+        //}
         if (this.onRefresh) {
             this._android.setOnRefreshListener(new android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener({
                 get owner() {
@@ -38,7 +42,7 @@ var PullToRefresh = (function (_super) {
                 },
                 onRefresh: function (v) {
                     if (this.owner) {
-                        this.owner._emit(common.SwipeRefreshLayout.onRefresh);
+                        this.owner._emit(common.PullToRefresh.onRefreshEvent);
                     }
                 }
             }));

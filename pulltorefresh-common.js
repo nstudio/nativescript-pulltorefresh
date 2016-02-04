@@ -11,21 +11,27 @@ var PullToRefresh = (function (_super) {
     function PullToRefresh() {
         _super.call(this);
     }
+    Object.defineProperty(PullToRefresh.prototype, "color", {
+        get: function () {
+            return this._getValue(PullToRefresh.colorProperty);
+        },
+        set: function (value) {
+            this._setValue(PullToRefresh.colorProperty, value);
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(PullToRefresh.prototype, "isRefreshing", {
-        //get radius(): number {
-        //    return this._getValue(SwipeRefreshLayout.radiusProperty);
-        //}
-        //set radius(value: number) {
-        //    this._setValue(SwipeRefreshLayout.radiusProperty, value);
-        //}
         get: function () {
             return this._getValue(PullToRefresh.isRefreshingProperty);
         },
         enumerable: true,
         configurable: true
     });
-    PullToRefresh.onRefresh = "onRefresh";
-    PullToRefresh.isRefreshingProperty = new dependencyObservable.Property("isRefreshing", "SwipeRefreshLayout", new proxy.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.None));
+    PullToRefresh.prototype.onRefresh = function () { }; //TODO
+    PullToRefresh.onRefreshEvent = "onRefresh";
+    PullToRefresh.isRefreshingProperty = new dependencyObservable.Property("isRefreshing", "PullToRefresh", new proxy.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.None));
+    PullToRefresh.colorProperty = new dependencyObservable.Property("color", "PullToRefresh", new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.None));
     return PullToRefresh;
 })(contentView.ContentView);
 exports.PullToRefresh = PullToRefresh;

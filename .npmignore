@@ -5,3 +5,7 @@ demo/
 nativescript-pulltorefresh.sln
 .sln
 *.sln
+references.d.ts
+tsconfig.json
+hooks/
+node_modules/

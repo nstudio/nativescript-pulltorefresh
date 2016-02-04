@@ -1,4 +1,5 @@
 ﻿import common = require("./pulltorefresh-common");
+import Color = require("color");
 
 global.moduleMerge(common, exports);
 
@@ -28,6 +29,13 @@ export class PullToRefresh extends common.PullToRefresh {
         }
         this._android.setId(this._androidViewId);
 
+
+        //if (this.color) {
+        //    //var Color = android.graphics.Color;
+        //    this._android.setColorSchemeColors(this.color.android, this.color.android, this.color.android, this.color.android);
+        //}
+
+
         if (this.onRefresh) {
             this._android.setOnRefreshListener(new android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener(
                 {
@@ -37,7 +45,7 @@ export class PullToRefresh extends common.PullToRefresh {
 
                     onRefresh: function (v) {
                         if (this.owner) {
-                            this.owner._emit(common.SwipeRefreshLayout.onRefresh);
+                            this.owner._emit(common.PullToRefresh.onRefreshEvent);
                         }
                     }
                 }));
