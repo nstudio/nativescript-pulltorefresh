@@ -1,0 +1,12 @@
+{
+	"nativescript": {
+		"id": "org.nativescript.pulltorefresh",
+		"tns-android": {
+			"version": "1.5.1"
+		}
+	},
+	"dependencies": {
+		"nativescript-pulltorefresh": "file:..",
+		"tns-core-modules": "latest"
+	}
+}

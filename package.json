@@ -1,0 +1,31 @@
+{
+  "name": "nativescript-pulltorefresh",
+  "version": "0.1.0",
+  "description": "A NativeScript plugin to provide the Pull to Refresh control on any view.",
+  "main": "pulltorefresh.js",
+  "nativescript": {
+    "platforms": {
+      "android": "1.5.0"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bradmartin/nativescript-pulltorefresh"
+  },
+  "keywords": [
+    "NativeScript",
+    "native",
+    "script",
+    "Layout",
+    "Pull Refresh",
+    "SwipeRefreshLayout",
+    "Material Design",
+    "android",
+    "bradmartin",
+    "Thorum"
+  ],
+  "author": "Brad Martin <bradwaynemartin@gmail.com> (https://github.com/bradmartin)",
+  "license": "Apache-2.0",
+  "bugs": "https://github.com/bradmartin/nativescript-pulltorefresh/issues",
+  "homepage": "https://github.com/bradmartin/nativescript-pulltorefresh"
+}

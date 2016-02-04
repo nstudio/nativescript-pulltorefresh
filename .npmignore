@@ -1,0 +1,7 @@
+﻿# generated files
+.vs
+.vs/
+demo/
+nativescript-pulltorefresh.sln
+.sln
+*.sln

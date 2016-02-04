@@ -1,0 +1,18 @@
+﻿//default elements
+android {
+    productFlavors {
+        "nativescriptswiperefreshlayout" {
+            dimension "nativescriptswiperefreshlayout"
+        }
+    }
+}
+
+dependencies {
+      def supportVer = "22.2.0";
+
+      if(project.hasProperty("supportVersion")) {
+       supportVer = supportVersion
+      }
+
+	 compile "com.android.support:support-v4:$supportVer"
+}

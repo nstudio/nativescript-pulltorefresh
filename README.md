@@ -1,2 +1,2 @@
-# nativescript-pulltorefresh
-NativeScript plugin to use native pull to refresh UI controls
+# NativeScript-PullToRefresh
+NativeScript plugin to use Pull to Refresh on any view.

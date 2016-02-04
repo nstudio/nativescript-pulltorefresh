@@ -1,0 +1,23 @@
+<page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:PullRefresh="nativescript-pulltorefresh"
+      loaded="pageLoaded">
+
+    <page.actionBar>
+        <action-bar title="Pull to Refresh?" backgroundColor="#009688" color="#f1f1f1" android.icon="res://ic_test"/>
+    </page.actionBar>
+
+
+    <PullRefresh:PullToRefresh loaded="swipeLoaded">
+        <scroll-view>
+            <label text="All ya gotta do is pull down guys... it's not that difficult." textWrap="true" />                    
+            <list-view items="{{ accountPageOptions }}"
+                       itemTap="accountOptionTap">
+                <ListView.itemTemplate>
+                    <label text="{{ name }}" textWrap="true" class="title" />
+                </ListView.itemTemplate>
+            </list-view>
+        </scroll-view>         
+        
+    </PullRefresh:PullToRefresh>
+    
+</page>
