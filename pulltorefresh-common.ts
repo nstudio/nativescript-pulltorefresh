@@ -13,7 +13,7 @@ import * as types from "utils/types";
 var AffectsLayout = platform.device.os === platform.platformNames.android ? dependencyObservable.PropertyMetadataSettings.None : dependencyObservable.PropertyMetadataSettings.AffectsLayout;
 
 export class PullToRefresh extends contentView.ContentView implements definition.PullToRefresh {
-    public static refreshEvent = "onRefresh";
+    public static onRefreshEvent = "onRefresh";
 
     public static isRefreshingProperty = new dependencyObservable.Property(
         "isRefreshing",

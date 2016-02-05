@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Program Files (x86)\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\Users\Brad\Source\Repos\nativescript-pulltorefresh\demo\platforms\android\build\intermediates\pre-dexed\nativescriptswiperefreshlayout\debug\support-annotations-23.1.1-6fd699aeef8bbc23a3ee27b7d45abde9e3ed1a1a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brad\Source\Repos\nativescript-pulltorefresh\demo\platforms\android\libs\widgets.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ff3c62a8eb22f0111b882125ad1579dc6273fd90">
+        <dex dex="C:\Users\Brad\Source\Repos\nativescript-pulltorefresh\demo\platforms\android\build\intermediates\pre-dexed\nativescriptswiperefreshlayout\debug\widgets-0ffe75f7701f157ab144bed9e73a82282d499cd9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brad\Source\Repos\nativescript-pulltorefresh\demo\platforms\android\libs\nativescript.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e49ee2301dce2f85edd44f634fd45ad92df9e00a">
+        <dex dex="C:\Users\Brad\Source\Repos\nativescript-pulltorefresh\demo\platforms\android\build\intermediates\pre-dexed\nativescriptswiperefreshlayout\debug\nativescript-ca38abd7f0ca20cdffb5c261964890d8c936ca7f.jar" />
+    </item>
+
+</items>

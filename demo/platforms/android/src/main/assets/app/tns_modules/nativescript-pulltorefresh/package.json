@@ -36,10 +36,10 @@
   "homepage": "https://github.com/bradmartin/nativescript-pulltorefresh",
   "readme": "# NativeScript-PullToRefresh :recycle:\nNativeScript plugin to use Pull to Refresh on any view.\n",
   "readmeFilename": "README.md",
-  "gitHead": "03036de0f818b19c56f26452ccf1d97d7880b4b2",
+  "gitHead": "c34e88e9ac70fe5bce122f642569e5fbb4888ad8",
   "_id": "nativescript-pulltorefresh@0.1.0",
   "scripts": {},
-  "_shasum": "7625085150dedeb64b1415c4413e0f4006c86d28",
+  "_shasum": "80ea5f287b7743b1e1009951031dfb9e20886d30",
   "_from": "..",
   "_resolved": "file:.."
 }

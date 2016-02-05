@@ -32,7 +32,7 @@ var PullToRefresh = (function (_super) {
         configurable: true
     });
     PullToRefresh.prototype.onRefreshEvent = function () { }; //TODO
-    PullToRefresh.refreshEvent = "onRefresh";
+    PullToRefresh.onRefreshEvent = "onRefresh";
     PullToRefresh.isRefreshingProperty = new dependencyObservable.Property("isRefreshing", "PullToRefresh", new proxy.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.None));
     PullToRefresh.colorProperty = new dependencyObservable.Property("color", "PullToRefresh", new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.None));
     return PullToRefresh;

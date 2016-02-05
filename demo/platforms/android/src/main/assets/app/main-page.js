@@ -21,14 +21,12 @@ exports.pageLoaded = pageLoaded;
 
 function swipeLoaded(args) {
     console.log('swipe android: ' + args.object.android);
-    console.log('swipe onRefresh() function: ' + args.object.onRefresh);
-    console.log('swipe color: ' + args.object.color);
 }
 exports.swipeLoaded = swipeLoaded;
 
 function refreshMe(args) {
-    console.log('refreshMe() started');
     console.log(args.object);
+    console.log('refreshMe() started');
 }
 exports.refreshMe = refreshMe;
 
