@@ -36,13 +36,10 @@ var PullToRefresh = (function (_super) {
         //    this._android.setColorSchemeColors(this.color.android, this.color.android, this.color.android, this.color.android);
         //}
         this._android.setOnRefreshListener(new android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener({
-            get owner() {
-                return that.get();
-            },
             onRefresh: function (v) {
-                if (this.owner) {
-                    console.log('owner = ' + this.owner);
-                    this.owner._emit(common.PullToRefresh.onRefreshEvent);
+                var owner = that.get();
+                if (owner) {
+                    owner._emit(common.PullToRefresh.refreshEvent);
                 }
             }
         }));

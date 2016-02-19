@@ -242,3 +242,8 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# NativeScript
+demo/platforms/
+demo/node_modules/
+

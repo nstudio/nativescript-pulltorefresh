@@ -41,9 +41,9 @@ export class PullToRefresh extends common.PullToRefresh {
             },
 
             onRefresh: function (v) {
-                if (this.owner) {
-                    console.log('owner = ' + this.owner);
-                    this.owner._emit(common.PullToRefresh.onRefreshEvent);
+                var owner = that.get();
+                if (owner) {
+                    owner._emit(common.PullToRefresh.refreshEvent);
                 }
             }
         }));
