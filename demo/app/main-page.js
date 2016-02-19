@@ -1,33 +1,72 @@
-var observable = require("data/observable");
-var frame = require("ui/frame");
-    
-var names = [
+var app = require("application");
+var Observable = require("data/observable").Observable;
+var ObservableArray = require("data/observable-array").ObservableArray;
+var platformModule = require("platform");
+var color = require("color");
+
+var users = [
     { name: 'Billy Bob' },
     { name: 'Tweeder' },
     { name: 'Mox' },
-    { name: 'Coach' },
+    { name: 'Coach' }, 
     { name: 'Lance' },
-    { name: 'Johnson'} 
+    { name: 'Johnson' },
+    { name: 'William' },
+    { name: 'Franklin' }
 ];
-var viewModel = new observable.Observable({
-    users: names
+var viewModel = new Observable({
+    users: new ObservableArray(users)
 });
 
 function pageLoaded(args) {
     var page = args.object;
-    page.bindingContext = viewModel;
+    // Change statusbar color on Lollipop
+
+    if (app.android && platformModule.device.sdkVersion >= "21") {
+        var window = app.android.startActivity.getWindow();
+        window.setStatusBarColor(new color.Color("#1976D2").android);
+    }
+    page.bindingContext = viewModel; 
+    loadItems();
 }
 exports.pageLoaded = pageLoaded;
 
-function swipeLoaded(args) {
-    console.log('swipe android: ' + args.object.android);
-}
-exports.swipeLoaded = swipeLoaded;
+function loadItems() {
+    return new Promise(function (resolve, reject) {
+        try { 
+            (20).times(function (i) {
+                var item = users[Math.floor(Math.random() * users.length)];
+                viewModel.users.unshift(item);
+            });
+            resolve("great success");
 
-function refreshMe(args) {
-    console.log(args.object);
-    console.log('refreshMe() started');
+        } catch (ex) {
+            reject(ex);
+        }
+    });
 }
-exports.refreshMe = refreshMe;
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi1wYWdlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibWFpbi1wYWdlLnRzIl0sIm5hbWVzIjpbInBhZ2VMb2FkZWQiLCJnb0F3YXkiXSwibWFwcGluZ3MiOiJBQUFBLElBQU8sVUFBVSxXQUFXLGlCQUFpQixDQUFDLENBQUM7QUFFL0MsSUFBTyxLQUFLLFdBQVcsVUFBVSxDQUFDLENBQUM7QUFFbkMsSUFBSSxTQUFTLEdBQUcsSUFBSSxVQUFVLENBQUMsVUFBVSxDQUFDLEVBQUUsQ0FBQyxDQUFDO0FBRTlDLG9CQUEyQixJQUEwQjtJQUNqREEsSUFBSUEsSUFBSUEsR0FBZUEsSUFBSUEsQ0FBQ0EsTUFBTUEsQ0FBQ0E7SUFDbkNBLElBQUlBLENBQUNBLGNBQWNBLEdBQUdBLFNBQVNBLENBQUNBO0FBQ3BDQSxDQUFDQTtBQUhlLGtCQUFVLGFBR3pCLENBQUE7QUFFRCxnQkFBdUIsSUFBMEI7SUFDN0NDLElBQUlBLElBQUlBLEdBQUdBLEtBQUtBLENBQUNBLE9BQU9BLEVBQUVBLENBQUNBLFdBQVdBLENBQUNBO0lBQ3ZDQSxJQUFJQSxJQUFJQSxHQUFHQSxJQUFJQSxDQUFDQSxXQUFXQSxDQUFDQSxVQUFVQSxDQUFDQSxDQUFDQTtJQUV4Q0EsT0FBT0EsQ0FBQ0EsR0FBR0EsQ0FBQ0EsSUFBSUEsQ0FBQ0EsQ0FBQ0E7SUFFbEJBLElBQUlBLENBQUNBLE9BQU9BLENBQUNBO1FBQ1RBLEtBQUtBLEVBQUVBLEVBQUVBLENBQUNBLEVBQUVBLENBQUNBLEVBQUVBLENBQUNBLEVBQUVBLENBQUNBLEVBQUVBO1FBQ3JCQSxPQUFPQSxFQUFFQSxDQUFDQTtRQUNWQSxRQUFRQSxFQUFFQSxJQUFJQTtLQUNqQkEsQ0FBQ0EsQ0FBQ0EsSUFBSUEsQ0FBQ0EsY0FBTUEsT0FBQUEsSUFBSUEsQ0FBQ0EsVUFBVUEsR0FBR0EsV0FBV0EsRUFBN0JBLENBQTZCQSxDQUFDQSxDQUFDQTtBQUVqREEsQ0FBQ0E7QUFaZSxjQUFNLFNBWXJCLENBQUEifQ==
+function refreshList(args) {
+
+    var pullRefresh = args.object;
+
+    loadItems().then(function (response) {
+        console.log(response);
+        // ONLY USING A TIMEOUT TO SIMULATE/SHOW OFF THE REFRESHING
+        setTimeout(function () {
+            pullRefresh.setRefreshing(false);
+        }, 1000);
+    }, function (err) {
+        pullRefresh.setRefreshing(false);
+        alert(err);
+    });
+}
+exports.refreshList = refreshList;
+
+
+
+Number.prototype.times = function (func) {
+    for (var i = 0; i < Number(this) ; i++) {
+        func(i);
+    }
+}

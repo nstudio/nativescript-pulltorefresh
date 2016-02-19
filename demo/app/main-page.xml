@@ -1,17 +1,16 @@
 <page xmlns="http://schemas.nativescript.org/tns.xsd"
-      xmlns:PullRefreshLayout="nativescript-pulltorefresh"
+      xmlns:PullRefresh="nativescript-pulltorefresh"
       loaded="pageLoaded">
-
     <page.actionBar>
-        <action-bar title="Pull to Refresh?" backgroundColor="#3489db" color="#f1f1f1" />
+        <action-bar title="Pull To Refresh :)" backgroundColor="#2196F3" color="#f1f1f1" />
     </page.actionBar>
-    <stack-layout>
-        <PullRefreshLayout:PullToRefresh loaded="swipeLoaded" refresh="refreshMe" color="#3489db">
-                <list-view items="{{ users }}" itemTap="accountOptionTap">
-                    <ListView.itemTemplate>
-                        <label text="{{ name }}" textWrap="true" class="title" />
-                    </ListView.itemTemplate>
-                </list-view>
-        </PullRefreshLayout:PullToRefresh>
+    <stack-layout>   
+        <PullRefresh:PullToRefresh loaded="swipeLoaded" refresh="refreshList" color="#3489db">
+            <list-view items="{{ users }}">
+                <list-view.itemTemplate>
+                    <label text="{{ name }}" row="0" col="1" textWrap="true" class="message" />                            
+                </list-view.itemTemplate>
+            </list-view>
+        </PullRefresh:PullToRefresh>        
     </stack-layout>
 </page>

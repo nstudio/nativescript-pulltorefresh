@@ -12,14 +12,14 @@ import * as types from "utils/types";
 export class PullToRefresh extends contentView.ContentView implements definition.PullToRefresh {
     public static refreshEvent = "refresh";
 
-    public static isRefreshingProperty = new dependencyObservable.Property(
-        "isRefreshing",
+    public static refreshingProperty = new dependencyObservable.Property(
+        "refreshing",
         "PullToRefresh",
         new proxy.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.None)
     );
 
     public static colorProperty = new dependencyObservable.Property(
-        "color",
+        "color", 
         "PullToRefresh",
         new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.None)
     );
@@ -35,8 +35,12 @@ export class PullToRefresh extends contentView.ContentView implements definition
         this._setValue(PullToRefresh.colorProperty, value);
     }
 
-    get isRefreshing(): boolean {
-        return this._getValue(PullToRefresh.isRefreshingProperty);
+    get refreshing(): boolean {
+        return this._getValue(PullToRefresh.refreshingProperty);
+    }
+
+    set refreshing(value: boolean) {
+        this._setValue(PullToRefresh.refreshingProperty.value);
     }
 
 }

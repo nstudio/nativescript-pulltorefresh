@@ -9,3 +9,4 @@ references.d.ts
 tsconfig.json
 hooks/
 node_modules/
+screens/

@@ -38,9 +38,9 @@ declare module "pulltorefresh" {
         isRefreshing: boolean;
 
         /*
-        * Notify the widget that refresh state has changed.
-        */
-        setRefreshing: boolean;
+        //* Notify the widget that refresh state has changed.
+        //*/
+        //setRefreshing: boolean;
 
         /**
          * Raised when a refresh event occurs.

@@ -4,6 +4,15 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var common = require("./pulltorefresh-common");
+function refreshingPropertyChanged(data) {
+    var pullRefresh = data.object;
+    if (!pullRefresh.android) {
+        return;
+    }
+    pullRefresh.android.setRefreshing(data.newValue);
+}
+// register the setNativeValue callback
+common.PullToRefresh.refreshingProperty.metadata.onSetNativeValue = refreshingPropertyChanged;
 global.moduleMerge(common, exports);
 var PullToRefresh = (function (_super) {
     __extends(PullToRefresh, _super);
@@ -24,6 +33,10 @@ var PullToRefresh = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    //Visibility methods
+    PullToRefresh.prototype.setRefreshing = function (newValue) {
+        this._android.setRefreshing(newValue);
+    };
     PullToRefresh.prototype._createUI = function () {
         var that = new WeakRef(this);
         this._android = new android.support.v4.widget.SwipeRefreshLayout(this._context);
@@ -36,6 +49,9 @@ var PullToRefresh = (function (_super) {
         //    this._android.setColorSchemeColors(this.color.android, this.color.android, this.color.android, this.color.android);
         //}
         this._android.setOnRefreshListener(new android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener({
+            get owner() {
+                return that.get();
+            },
             onRefresh: function (v) {
                 var owner = that.get();
                 if (owner) {

@@ -21,15 +21,18 @@ var PullToRefresh = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(PullToRefresh.prototype, "isRefreshing", {
+    Object.defineProperty(PullToRefresh.prototype, "refreshing", {
         get: function () {
-            return this._getValue(PullToRefresh.isRefreshingProperty);
+            return this._getValue(PullToRefresh.refreshingProperty);
+        },
+        set: function (value) {
+            this._setValue(PullToRefresh.refreshingProperty.value);
         },
         enumerable: true,
         configurable: true
     });
     PullToRefresh.refreshEvent = "refresh";
-    PullToRefresh.isRefreshingProperty = new dependencyObservable.Property("isRefreshing", "PullToRefresh", new proxy.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.None));
+    PullToRefresh.refreshingProperty = new dependencyObservable.Property("refreshing", "PullToRefresh", new proxy.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.None));
     PullToRefresh.colorProperty = new dependencyObservable.Property("color", "PullToRefresh", new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.None));
     return PullToRefresh;
 })(contentView.ContentView);
