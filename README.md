@@ -9,7 +9,7 @@ NativeScript plugin to use Pull to Refresh on any view.
 
 ## Sample Screen
 
-![PullToRefresh](screens/pullrefresh.gif)
+![PullToRefresh](screens/pullrefreshMDspec.gif)
 
 ## Installation
 `npm install nativescript-pulltorefresh`
