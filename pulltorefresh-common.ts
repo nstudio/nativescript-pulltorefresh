@@ -10,7 +10,7 @@ import utils = require("utils/utils");
 import * as types from "utils/types";
 
 export class PullToRefresh extends contentView.ContentView implements definition.PullToRefresh {
-    public static onRefreshEvent = "onRefresh";
+    public static refreshEvent = "refresh";
 
     public static isRefreshingProperty = new dependencyObservable.Property(
         "isRefreshing",
@@ -38,7 +38,5 @@ export class PullToRefresh extends contentView.ContentView implements definition
     get isRefreshing(): boolean {
         return this._getValue(PullToRefresh.isRefreshingProperty);
     }
-
-    public onRefreshEvent() { } //TODO
 
 }
