@@ -6,7 +6,7 @@
         <action-bar title="Pull to Refresh?" backgroundColor="#3489db" color="#f1f1f1" />
     </page.actionBar>
     <stack-layout>
-        <PullRefreshLayout:PullToRefresh id="swipe" loaded="swipeLoaded" onRefresh="refreshMe" color="#3489db">
+        <PullRefreshLayout:PullToRefresh loaded="swipeLoaded" onRefreshEvent="refreshMe" color="#3489db">
                 <list-view items="{{ users }}" itemTap="accountOptionTap">
                     <ListView.itemTemplate>
                         <label text="{{ name }}" textWrap="true" class="title" />

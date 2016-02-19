@@ -6,9 +6,6 @@ var __extends = (this && this.__extends) || function (d, b) {
 var contentView = require("ui/content-view");
 var dependencyObservable = require("ui/core/dependency-observable");
 var proxy = require("ui/core/proxy");
-var platform = require("platform");
-// on Android we explicitly set propertySettings to None because android will invalidate its layout (skip unnecessary native call).
-var AffectsLayout = platform.device.os === platform.platformNames.android ? dependencyObservable.PropertyMetadataSettings.None : dependencyObservable.PropertyMetadataSettings.AffectsLayout;
 var PullToRefresh = (function (_super) {
     __extends(PullToRefresh, _super);
     function PullToRefresh(options) {

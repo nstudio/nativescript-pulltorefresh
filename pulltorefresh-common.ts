@@ -9,9 +9,6 @@ import platform = require("platform");
 import utils = require("utils/utils");
 import * as types from "utils/types";
 
-// on Android we explicitly set propertySettings to None because android will invalidate its layout (skip unnecessary native call).
-var AffectsLayout = platform.device.os === platform.platformNames.android ? dependencyObservable.PropertyMetadataSettings.None : dependencyObservable.PropertyMetadataSettings.AffectsLayout;
-
 export class PullToRefresh extends contentView.ContentView implements definition.PullToRefresh {
     public static onRefreshEvent = "onRefresh";
 

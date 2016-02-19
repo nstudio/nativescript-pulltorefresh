@@ -8,7 +8,7 @@ global.moduleMerge(common, exports);
 var PullToRefresh = (function (_super) {
     __extends(PullToRefresh, _super);
     function PullToRefresh() {
-        _super.apply(this, arguments);
+        _super.call(this);
     }
     Object.defineProperty(PullToRefresh.prototype, "android", {
         get: function () {
@@ -35,19 +35,17 @@ var PullToRefresh = (function (_super) {
         //    //var Color = android.graphics.Color;
         //    this._android.setColorSchemeColors(this.color.android, this.color.android, this.color.android, this.color.android);
         //}
-        if (this.onRefreshEvent) {
-            this._android.setOnRefreshListener(new android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener({
-                get owner() {
-                    return that.get();
-                },
-                onRefresh: function (v) {
-                    if (this.owner) {
-                        console.log('owner = ' + this.owner);
-                        this.owner._emit(common.PullToRefresh.onRefreshEvent);
-                    }
+        this._android.setOnRefreshListener(new android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener({
+            get owner() {
+                return that.get();
+            },
+            onRefresh: function (v) {
+                if (this.owner) {
+                    console.log('owner = ' + this.owner);
+                    this.owner._emit(common.PullToRefresh.onRefreshEvent);
                 }
-            }));
-        }
+            }
+        }));
     };
     return PullToRefresh;
 })(common.PullToRefresh);

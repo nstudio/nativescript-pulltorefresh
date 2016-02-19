@@ -15,7 +15,7 @@ declare module "pulltorefresh" {
         /**
          * String value used when hooking to the onRefresh event.
          */
-        public static onRefreshEvent: string;
+        public static refreshEvent: string;
        
         /**
          * Gets the native [android widget](http://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html) that represents the user interface for this component. Valid only when running on Android OS.
@@ -45,7 +45,7 @@ declare module "pulltorefresh" {
         /**
          * Raised when a refresh event occurs.
          */
-        on(event: "onRefresh", callback: (args: observable.EventData) => void, thisArg?: any);
+        on(event: "refresh", callback: (args: observable.EventData) => void, thisArg?: any);
 
 
         /**
@@ -56,21 +56,5 @@ declare module "pulltorefresh" {
         */
         _addChildFromBuilder(name: string, value: any): void;
     }
-
-    ///**
-    //* Provides common options for creating the PullToRefresh
-    //*/
-    //export interface Options extends view.Options {
-
-    //    /*
-    //   * Gets or sets the color to use in the progress animation
-    //   */
-    //    color: any;
-
-    //    /*
-    //    * Gets or sets the event that executes when the refresh is initiated.
-    //    */
-    //    onRefresh: string;
-    //}
 
 }
