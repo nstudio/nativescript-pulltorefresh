@@ -5,11 +5,12 @@ declare module "pulltorefresh" {
     import dependencyObservable = require("ui/core/dependency-observable");
     import view = require("ui/core/view");
     import observable = require("data/observable");
-
+    import contentView = require("ui/content-view");
+    
     /**
      * Represents a standard PullToRefresh Layout
      */
-    export class PullToRefresh extends view.View implements view.AddChildFromBuilder {
+    export class PullToRefresh extends contentView.ContentView {
         public static isRefreshingProperty: dependencyObservable.Property;
 
         /**
@@ -22,20 +23,10 @@ declare module "pulltorefresh" {
          */
         android: any /* android.support.v4.widget.SwipeRefreshLayout */;
 
-        /**
-         * Gets or sets listener when a refresh is triggered via swipe gesture
-         */
-        onRefreshListener: any; /* android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener */
-
-        /*
-        * Gets or sets the color to use in the progress animation
-        */
-        color: any;
-
         /*
         * Gets or sets if the view is refreshing
         */
-        isRefreshing: boolean;
+        refreshing: boolean;
 
         /*
         //* Notify the widget that refresh state has changed.
@@ -46,15 +37,6 @@ declare module "pulltorefresh" {
          * Raised when a refresh event occurs.
          */
         on(event: "refresh", callback: (args: observable.EventData) => void, thisArg?: any);
-
-
-        /**
-        * Called for every child element declared in xml.
-        * This method will add a child element (value) to current element.
-        * @param name - Name of the element.
-        * @param value - Value of the element.
-        */
-        _addChildFromBuilder(name: string, value: any): void;
     }
 
 }

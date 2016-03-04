@@ -1,9 +1,11 @@
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    __.prototype = b.prototype;
+    d.prototype = new __();
 };
 var common = require("./pulltorefresh-common");
+var style = require("ui/styling/style");
 function refreshingPropertyChanged(data) {
     var pullRefresh = data.object;
     if (!pullRefresh.android) {
@@ -11,7 +13,6 @@ function refreshingPropertyChanged(data) {
     }
     pullRefresh.android.setRefreshing(data.newValue);
 }
-// register the setNativeValue callback
 common.PullToRefresh.refreshingProperty.metadata.onSetNativeValue = refreshingPropertyChanged;
 global.moduleMerge(common, exports);
 var PullToRefresh = (function (_super) {
@@ -33,7 +34,6 @@ var PullToRefresh = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    //Visibility methods
     PullToRefresh.prototype.setRefreshing = function (newValue) {
         this._android.setRefreshing(newValue);
     };
@@ -44,10 +44,6 @@ var PullToRefresh = (function (_super) {
             this._androidViewId = android.view.View.generateViewId();
         }
         this._android.setId(this._androidViewId);
-        //if (this.color) {
-        //    //var Color = android.graphics.Color;
-        //    this._android.setColorSchemeColors(this.color.android, this.color.android, this.color.android, this.color.android);
-        //}
         this._android.setOnRefreshListener(new android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener({
             get owner() {
                 return that.get();
@@ -63,3 +59,31 @@ var PullToRefresh = (function (_super) {
     return PullToRefresh;
 })(common.PullToRefresh);
 exports.PullToRefresh = PullToRefresh;
+var PullToRefreshStyler = (function () {
+    function PullToRefreshStyler() {
+    }
+    PullToRefreshStyler.setBackgroundColor = function (pullToRefresh, value) {
+        var native = pullToRefresh._nativeView;
+        native.setProgressBackgroundColorSchemeColor(value);
+    };
+    PullToRefreshStyler.resetBackgroundColor = function (pullToRefresh, value) {
+        var native = pullToRefresh._nativeView;
+        native.setProgressBackgroundColorSchemeColor(value);
+    };
+    PullToRefreshStyler.setColor = function (pullToRefresh, value) {
+        var native = pullToRefresh._nativeView;
+        native.setColorSchemeColors([value]);
+    };
+    PullToRefreshStyler.resetColor = function (pullToRefresh, value) {
+        var native = pullToRefresh._nativeView;
+        native.setColorSchemeColors([value]);
+    };
+    PullToRefreshStyler.registerHandlers = function () {
+        style.registerHandler(style.backgroundColorProperty, new style.StylePropertyChangedHandler(PullToRefreshStyler.setBackgroundColor, PullToRefreshStyler.resetBackgroundColor), "PullToRefresh");
+        style.registerHandler(style.backgroundInternalProperty, style.ignorePropertyHandler, "PullToRefresh");
+        style.registerHandler(style.colorProperty, new style.StylePropertyChangedHandler(PullToRefreshStyler.setColor, PullToRefreshStyler.resetColor), "PullToRefresh");
+    };
+    return PullToRefreshStyler;
+})();
+exports.PullToRefreshStyler = PullToRefreshStyler;
+PullToRefreshStyler.registerHandlers();

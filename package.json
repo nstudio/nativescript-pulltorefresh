@@ -1,11 +1,11 @@
 {
   "name": "nativescript-pulltorefresh",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A NativeScript plugin to provide the Pull to Refresh control on any view.",
   "main": "pulltorefresh.js",
   "nativescript": {
     "platforms": {
-      "android": "1.5.0"
+      "android": "1.6.0"
     }
   },
   "repository": {
