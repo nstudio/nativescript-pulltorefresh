@@ -1,8 +1,8 @@
 ﻿import common = require("./pulltorefresh-common");
 import dependencyObservable = require("ui/core/dependency-observable");
 import proxy = require("ui/core/proxy");
-import color = require("color");
 import view = require("ui/core/view");
+import style = require("ui/styling/style");
 
 
 function refreshingPropertyChanged(data: dependencyObservable.PropertyChangeData) {
@@ -22,7 +22,8 @@ global.moduleMerge(common, exports);
 
 export class PullToRefresh extends common.PullToRefresh {
     private _android: android.support.v4.widget.SwipeRefreshLayout;
-
+    private _androidViewId: number;
+    
     constructor() {
         super();
     }
@@ -34,7 +35,19 @@ export class PullToRefresh extends common.PullToRefresh {
     get _nativeView(): android.support.v4.widget.SwipeRefreshLayout {
         return this._android;
     }
-
+    
+    public _addChildFromBuilder(name: string, value: any) {
+        // Copy inheirtable style property values
+        var originalColor = value.style.color || null;
+        
+        if (value instanceof view.View) {
+            this.content = value;
+        }
+        
+        // Reset inheritable style property values as we do not want those to be inherited
+        value.style.color = originalColor;
+    }
+    
     //Visibility methods
     public setRefreshing(newValue: boolean) {
         this._android.setRefreshing(newValue);
@@ -51,11 +64,6 @@ export class PullToRefresh extends common.PullToRefresh {
         }
         this._android.setId(this._androidViewId);
 
-        //if (this.color) {
-        //    //var Color = android.graphics.Color;
-        //    this._android.setColorSchemeColors(this.color.android, this.color.android, this.color.android, this.color.android);
-        //}
-
         this._android.setOnRefreshListener(new android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener({
             get owner() {
                 return that.get();
@@ -68,7 +76,40 @@ export class PullToRefresh extends common.PullToRefresh {
                 }
             }
         }));
-                     
     }
-
 }
+
+export class PullToRefreshStyler implements style.Styler {
+    private static setBackgroundColor(pullToRefresh: PullToRefresh, value: any) {
+        var native = <android.support.v4.widget.SwipeRefreshLayout>pullToRefresh._nativeView;
+        native.setProgressBackgroundColorSchemeColor(value);
+    }
+    private static resetBackgroundColor(pullToRefresh: PullToRefresh, value: any) {
+        var native = <android.support.v4.widget.SwipeRefreshLayout>pullToRefresh._nativeView;
+        native.setProgressBackgroundColorSchemeColor(value);
+    }
+    
+    private static setColor(pullToRefresh: PullToRefresh, value: any) {
+        var native = <android.support.v4.widget.SwipeRefreshLayout>pullToRefresh._nativeView;        
+        native.setColorSchemeColors([value]);
+    }
+    private static resetColor(pullToRefresh: PullToRefresh, value: any) {
+        var native = <android.support.v4.widget.SwipeRefreshLayout>pullToRefresh._nativeView;
+        native.setColorSchemeColors([value]);
+    }
+    
+    public static registerHandlers() {
+        style.registerHandler(style.backgroundColorProperty, 
+            new style.StylePropertyChangedHandler(PullToRefreshStyler.setBackgroundColor, 
+                PullToRefreshStyler.resetBackgroundColor), 
+            "PullToRefresh");
+        style.registerHandler(style.backgroundInternalProperty, 
+            style.ignorePropertyHandler, 
+            "PullToRefresh");
+        style.registerHandler(style.colorProperty, 
+            new style.StylePropertyChangedHandler(PullToRefreshStyler.setColor, 
+                PullToRefreshStyler.resetColor), 
+            "PullToRefresh");
+    }
+}
+PullToRefreshStyler.registerHandlers();

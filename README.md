@@ -65,7 +65,3 @@ exports.refreshList = refreshList;
 ### setRefreshing
 
 Notifies the widget that the refresh state has changed.
-
-### TODO
-
-- Add color property to set the color indicator
