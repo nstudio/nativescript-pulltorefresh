@@ -1,10 +1,11 @@
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var common = require("./pulltorefresh-common");
+var view = require("ui/core/view");
 var style = require("ui/styling/style");
 function refreshingPropertyChanged(data) {
     var pullRefresh = data.object;
@@ -34,6 +35,13 @@ var PullToRefresh = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    PullToRefresh.prototype._addChildFromBuilder = function (name, value) {
+        var originalColor = value.style.color || null;
+        if (value instanceof view.View) {
+            this.content = value;
+        }
+        value.style.color = originalColor;
+    };
     PullToRefresh.prototype.setRefreshing = function (newValue) {
         this._android.setRefreshing(newValue);
     };
@@ -57,7 +65,7 @@ var PullToRefresh = (function (_super) {
         }));
     };
     return PullToRefresh;
-})(common.PullToRefresh);
+}(common.PullToRefresh));
 exports.PullToRefresh = PullToRefresh;
 var PullToRefreshStyler = (function () {
     function PullToRefreshStyler() {
@@ -84,6 +92,6 @@ var PullToRefreshStyler = (function () {
         style.registerHandler(style.colorProperty, new style.StylePropertyChangedHandler(PullToRefreshStyler.setColor, PullToRefreshStyler.resetColor), "PullToRefresh");
     };
     return PullToRefreshStyler;
-})();
+}());
 exports.PullToRefreshStyler = PullToRefreshStyler;
 PullToRefreshStyler.registerHandlers();

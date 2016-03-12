@@ -1,8 +1,8 @@
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var contentView = require("ui/content-view");
 var dependencyObservable = require("ui/core/dependency-observable");
@@ -25,5 +25,5 @@ var PullToRefresh = (function (_super) {
     PullToRefresh.refreshEvent = "refresh";
     PullToRefresh.refreshingProperty = new dependencyObservable.Property("refreshing", "PullToRefresh", new proxy.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.None));
     return PullToRefresh;
-})(contentView.ContentView);
+}(contentView.ContentView));
 exports.PullToRefresh = PullToRefresh;

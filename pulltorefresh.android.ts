@@ -35,7 +35,19 @@ export class PullToRefresh extends common.PullToRefresh {
     get _nativeView(): android.support.v4.widget.SwipeRefreshLayout {
         return this._android;
     }
-
+    
+    public _addChildFromBuilder(name: string, value: any) {
+        // Copy inheirtable style property values
+        var originalColor = value.style.color || null;
+        
+        if (value instanceof view.View) {
+            this.content = value;
+        }
+        
+        // Reset inheritable style property values as we do not want those to be inherited
+        value.style.color = originalColor;
+    }
+    
     //Visibility methods
     public setRefreshing(newValue: boolean) {
         this._android.setRefreshing(newValue);
@@ -78,7 +90,7 @@ export class PullToRefreshStyler implements style.Styler {
     }
     
     private static setColor(pullToRefresh: PullToRefresh, value: any) {
-        var native = <android.support.v4.widget.SwipeRefreshLayout>pullToRefresh._nativeView;
+        var native = <android.support.v4.widget.SwipeRefreshLayout>pullToRefresh._nativeView;        
         native.setColorSchemeColors([value]);
     }
     private static resetColor(pullToRefresh: PullToRefresh, value: any) {
