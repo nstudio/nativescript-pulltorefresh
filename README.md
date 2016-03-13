@@ -7,9 +7,10 @@ NativeScript plugin to use Pull to Refresh on any view.
 ##### [Material Design Indicators Spec](https://www.google.com/design/spec/components/progress-activity.html#progress-activity-types-of-indicators)
 
 
-## Sample Screen
+### Sample Screen
 
-![PullToRefresh](screens/pullrefreshMDspec.gif)
+![Pull to Refresh sample](screens/refresh.gif)
+
 
 ## Installation
 `npm install nativescript-pulltorefresh`
