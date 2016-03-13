@@ -14,6 +14,8 @@ tsconfig.json
 *.sln.docstates
 .sln
 *.sln
+.DS_Store
+*.DS_Store
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
