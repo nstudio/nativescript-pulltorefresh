@@ -36,18 +36,6 @@ export class PullToRefresh extends common.PullToRefresh {
         return this._android;
     }
     
-    public _addChildFromBuilder(name: string, value: any) {
-        // Copy inheirtable style property values
-        var originalColor = value.style.color || null;
-        
-        if (value instanceof view.View) {
-            this.content = value;
-        }
-        
-        // Reset inheritable style property values as we do not want those to be inherited
-        value.style.color = originalColor;
-    }
-    
     //Visibility methods
     public setRefreshing(newValue: boolean) {
         this._android.setRefreshing(newValue);
