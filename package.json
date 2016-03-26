@@ -1,11 +1,12 @@
 {
   "name": "nativescript-pulltorefresh",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "A NativeScript plugin to provide the Pull to Refresh control on any view.",
   "main": "pulltorefresh.js",
   "nativescript": {
     "platforms": {
-      "android": "1.6.0"
+      "android": "1.6.0", 
+      "ios": "1.6.0"
     }
   },
   "repository": {
@@ -19,7 +20,9 @@
     "Pull Refresh",
     "SwipeRefreshLayout",
     "Material Design",
+    "UIRefreshControl",
     "android",
+    "ios",
     "bradmartin",
     "Thorum"
   ],
@@ -31,7 +34,7 @@
     }, 
     {
       "name": "Peter Staev",
-      "email": "peter.staev@gmail.com",
+      "email": "peter@tangrasoft.com",
       "url": "https://github.com/PeterStaev"
     }
   ],

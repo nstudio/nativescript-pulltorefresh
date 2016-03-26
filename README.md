@@ -1,8 +1,6 @@
 # NativeScript-PullToRefresh :recycle:
 NativeScript plugin to use Pull to Refresh on any view. 
 
-**Android Only - PRs welcome for iOS**.
-
 #### [Android SwipeRefreshLayout](http://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html)
 ##### [Material Design Indicators Spec](https://www.google.com/design/spec/components/progress-activity.html#progress-activity-types-of-indicators)
 
@@ -44,14 +42,14 @@ function refreshList(args) {
     // Get reference to the PullToRefresh;
     var pullRefresh = args.object;
 
-    // Do work here... and when done call .setRefreshing(false) to stop the refreshing
+    // Do work here... and when done call set refreshing property to false to stop the refreshing
     loadItems().then(function (resp) {
         // ONLY USING A TIMEOUT TO SIMULATE/SHOW OFF THE REFRESHING
         setTimeout(function () {
-            pullRefresh.setRefreshing(false);
+            pullRefresh.refreshing = false;
         }, 1000);
     }, function (err) {
-        pullRefresh.setRefreshing(false);
+        pullRefresh.refreshing = false;
     });
 }
 exports.refreshList = refreshList;
@@ -63,6 +61,6 @@ exports.refreshList = refreshList;
 
 ## API
 
-### setRefreshing
+### refreshing
 
-Notifies the widget that the refresh state has changed.
+Property. Notifies the widget that the refresh state has changed.

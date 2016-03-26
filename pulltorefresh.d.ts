@@ -38,11 +38,6 @@ declare module "nativescript-pulltorefresh" {
         */
         refreshing: boolean;
 
-        /*
-        //* Notify the widget that refresh state has changed.
-        //*/
-        //setRefreshing: boolean;
-
         /**
          * Raised when a refresh event occurs.
          */

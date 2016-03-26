@@ -51,6 +51,7 @@ var PullToRefresh = (function (_super) {
             onRefresh: function (v) {
                 var owner = that.get();
                 if (owner) {
+                    owner.refreshing = true;
                     owner._emit(common.PullToRefresh.refreshEvent);
                 }
             }
