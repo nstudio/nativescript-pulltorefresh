@@ -1,13 +1,15 @@
 # NativeScript-PullToRefresh :recycle:
 NativeScript plugin to use Pull to Refresh on any view. 
 
-#### [Android SwipeRefreshLayout](http://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html)
-##### [Material Design Indicators Spec](https://www.google.com/design/spec/components/progress-activity.html#progress-activity-types-of-indicators)
+#### [Android - *SwipeRefreshLayout*](http://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html)
 
+#### [iOS - *UIRefreshControl*](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIRefreshControl_class/)
 
 ### Sample Screen
 
-![Pull to Refresh sample](screens/refresh.gif)
+Android |  iOS
+-------- | ---------
+![Android Sample](screens/android_refresh.gif) | ![iOS Sample](screens/ios_refresh.gif)
 
 
 ## Installation
@@ -20,9 +22,6 @@ NativeScript plugin to use Pull to Refresh on any view.
 <page xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:PullRefresh="nativescript-pulltorefresh"
       loaded="pageLoaded">
-    <page.actionBar>
-        <action-bar title="Pull To Refresh :)" backgroundColor="#2196F3" color="#f1f1f1" />
-    </page.actionBar>
     <stack-layout>   
         <PullRefresh:PullToRefresh refresh="refreshList">
             <list-view items="{{ users }}">

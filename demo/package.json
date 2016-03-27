@@ -2,7 +2,10 @@
 	"nativescript": {
 		"id": "org.nativescript.pulltorefresh",
 		"tns-android": {
-			"version": "1.6.1"
+			"version": "1.7.1"
+		},
+		"tns-ios": {
+			"version": "1.7.0"
 		}
 	},
 	"dependencies": {
