@@ -5,7 +5,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var common = require("./pulltorefresh-common");
-var view = require("ui/core/view");
 var style = require("ui/styling/style");
 function refreshingPropertyChanged(data) {
     var pullRefresh = data.object;
@@ -35,13 +34,6 @@ var PullToRefresh = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    PullToRefresh.prototype._addChildFromBuilder = function (name, value) {
-        var originalColor = value.style.color || null;
-        if (value instanceof view.View) {
-            this.content = value;
-        }
-        value.style.color = originalColor;
-    };
     PullToRefresh.prototype.setRefreshing = function (newValue) {
         this._android.setRefreshing(newValue);
     };
@@ -59,6 +51,7 @@ var PullToRefresh = (function (_super) {
             onRefresh: function (v) {
                 var owner = that.get();
                 if (owner) {
+                    owner.refreshing = true;
                     owner._emit(common.PullToRefresh.refreshEvent);
                 }
             }

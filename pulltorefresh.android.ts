@@ -35,23 +35,6 @@ export class PullToRefresh extends common.PullToRefresh {
     get _nativeView(): android.support.v4.widget.SwipeRefreshLayout {
         return this._android;
     }
-    
-    public _addChildFromBuilder(name: string, value: any) {
-        // Copy inheirtable style property values
-        var originalColor = value.style.color || null;
-        
-        if (value instanceof view.View) {
-            this.content = value;
-        }
-        
-        // Reset inheritable style property values as we do not want those to be inherited
-        value.style.color = originalColor;
-    }
-    
-    //Visibility methods
-    public setRefreshing(newValue: boolean) {
-        this._android.setRefreshing(newValue);
-    }
 
     public _createUI() { 
 
@@ -72,6 +55,7 @@ export class PullToRefresh extends common.PullToRefresh {
             onRefresh: function (v) {
                 var owner = that.get();
                 if (owner) {
+                    owner.refreshing = true;
                     owner._emit(common.PullToRefresh.refreshEvent);
                 }
             }

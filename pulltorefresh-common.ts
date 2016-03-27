@@ -24,5 +24,16 @@ export class PullToRefresh extends contentView.ContentView implements definition
     set refreshing(value: boolean) {
         this._setValue(PullToRefresh.refreshingProperty, value);
     }
-
+    
+    public _addChildFromBuilder(name: string, value: any) {
+        // Copy inheirtable style property values
+        var originalColor = value.style.color || null;
+        
+        if (value instanceof view.View) {
+            this.content = value;
+        }
+        
+        // Reset inheritable style property values as we do not want those to be inherited
+        value.style.color = originalColor;
+    }
 }

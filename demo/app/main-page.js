@@ -54,10 +54,10 @@ function refreshList(args) {
         console.log(response);
         // ONLY USING A TIMEOUT TO SIMULATE/SHOW OFF THE REFRESHING
         setTimeout(function () {
-            pullRefresh.setRefreshing(false);
+            pullRefresh.refreshing = false;
         }, 1000);
     }, function (err) {
-        pullRefresh.setRefreshing(false);
+        pullRefresh.refreshing = false;
         alert(err);
     });
 }
