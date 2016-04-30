@@ -1,3 +1,6 @@
+[![npm](https://img.shields.io/npm/v/nativescript-pulltorefresh.svg)](https://www.npmjs.com/package/nativescript-pulltorefresh)
+[![npm](https://img.shields.io/npm/dt/nativescript-pulltorefresh.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-pulltorefresh)
+
 # NativeScript-PullToRefresh :recycle:
 NativeScript plugin to use Pull to Refresh on any view. 
 
