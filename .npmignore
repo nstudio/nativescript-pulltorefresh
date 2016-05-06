@@ -1,12 +1,10 @@
 ﻿# generated files
 .vs
 .vs/
-demo/
-nativescript-pulltorefresh.sln
+nativescript-shatterview.sln
 .sln
 *.sln
-references.d.ts
-tsconfig.json
-hooks/
-node_modules/
+demo/
 screens/
+*.png
+*.log
