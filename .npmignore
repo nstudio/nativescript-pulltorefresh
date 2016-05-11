@@ -8,3 +8,4 @@ demo/
 screens/
 *.png
 *.log
+*.ts
