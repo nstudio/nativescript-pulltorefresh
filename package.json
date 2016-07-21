@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-pulltorefresh",
-	"version": "1.1.4",
+	"version": "1.1.5",
 	"description": "A NativeScript plugin to provide the Pull to Refresh control on any view.",
 	"main": "pulltorefresh.js",
 	"nativescript": {

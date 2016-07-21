@@ -16,11 +16,11 @@ Android |  iOS
 
 
 ## Installation
-`npm install nativescript-pulltorefresh`
+`tns plugin add nativescript-pulltorefresh`
 
 ## Usage
 
-###
+### XML
 ```XML
 <page xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:PullRefresh="nativescript-pulltorefresh"
@@ -37,7 +37,7 @@ Android |  iOS
 </page>
 ```
 
-###
+### JS
 ```JS
 function refreshList(args) {
 

@@ -1,7 +1,6 @@
 ﻿# generated files
 .vs
 .vs/
-nativescript-shatterview.sln
 .sln
 *.sln
 demo/
