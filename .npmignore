@@ -1,9 +1,10 @@
-﻿# generated files
-.vs
+﻿.vs
 .vs/
-.sln
+.vscode/
 *.sln
 demo/
 screens/
-*.png
-*.log
+*.gitattributes
+*.ts
+!*.d.ts
+tsconfig.json
