@@ -2,8 +2,7 @@
  * Contains the PullToRefresh class, which represents a Layout that contains the UI pattern for pull-to-refresh
  */
 
-import common = require("./pulltorefresh-common");
-export declare class PullToRefresh extends common.PullToRefresh {
+export declare class PullToRefresh {
 
     /**
      * String value used when hooking to the onRefresh event.
@@ -23,17 +22,10 @@ export declare class PullToRefresh extends common.PullToRefresh {
     /**
      * Returns the native iOS UIRefreshControl
      */
-    refreshControl: UIRefreshControl
+    refreshControl: any /// UIRefreshControl
 
     /*
     * Gets or sets if the view is refreshing
     */
     refreshing: boolean;
-
-    /**
-     * Raised when a refresh event occurs.
-     */
-    on(event: string, callback: (args: observable.EventData) => void, thisArg?: any);
-    on(event: "refresh", callback: (args: observable.EventData) => void, thisArg?: any);
-
 }
