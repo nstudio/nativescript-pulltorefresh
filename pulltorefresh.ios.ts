@@ -68,6 +68,12 @@ export class PullToRefresh extends common.PullToRefresh {
             
             this.content.ios.addSubview(this._refreshControl);
         }
+        else if (this.content.ios instanceof UIWebView) {
+            // Ensure that we can trigger the refresh, even if the content is not large enough
+            this.content.ios.scrollView.alwaysBounceVertical = true;
+            
+            this.content.ios.scrollView.addSubview(this._refreshControl);
+        }
         else {
             throw new Error("Content must inherit from UIScrollView!");
         }
