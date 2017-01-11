@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-pulltorefresh",
-	"version": "1.1.9",
+	"version": "1.1.10",
 	"description": "A NativeScript plugin to provide the Pull to Refresh control on any view.",
 	"main": "pulltorefresh",
 	"typings": "index.d.ts",
@@ -37,6 +37,11 @@
 			"name": "Peter Staev",
 			"email": "peter@tangrasoft.com",
 			"url": "https://github.com/PeterStaev"
+		},
+		{
+			"name": "Andrew Halls",
+			"email": "andrew@galtsoft.com",
+			"url": "https://github.com/ahalls"
 		}
 	],
 	"author": "Brad Martin <bradwaynemartin@gmail.com> (https://github.com/bradmartin)",
