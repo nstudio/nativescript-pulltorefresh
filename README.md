@@ -20,7 +20,8 @@ Android |  iOS
 
 ## Usage
 
-### XML
+### Vanilla NativeScript
+#### XML
 ```XML
 <page xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:PullRefresh="nativescript-pulltorefresh"
@@ -37,7 +38,7 @@ Android |  iOS
 </page>
 ```
 
-### JS
+#### JS
 ```JS
 function refreshList(args) {
 
@@ -56,7 +57,30 @@ function refreshList(args) {
 }
 exports.refreshList = refreshList;
 ```
+### Angular NativeScript
 
+#### Angular+TypeScript
+```TS
+import { registerElement } from "nativescript-angular/element-registry";
+registerElement("PullToRefresh", () => require("nativescript-pulltorefresh").PullToRefresh);
+
+refreshList(args) {
+         var pullRefresh = args.object;
+         setTimeout(function () {
+            pullRefresh.refreshing = false;
+         }, 1000);
+    }
+```
+#### HTML
+```HTML
+<PullToRefresh (refresh)="refreshList($event)">
+    <ListView [items]="itemList" >
+        <template let-item="item">
+            <Label [text]="item.id"></Label>
+        </template>
+    </ListView>
+</PullToRefresh>
+```
 
 ## Attributes
 **refresh : function** *required*
