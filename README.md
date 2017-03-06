@@ -59,7 +59,6 @@ exports.refreshList = refreshList;
 ```
 ### Angular NativeScript
 
-#### Angular+TypeScript
 ```TS
 import { registerElement } from "nativescript-angular/element-registry";
 registerElement("PullToRefresh", () => require("nativescript-pulltorefresh").PullToRefresh);
@@ -71,6 +70,7 @@ refreshList(args) {
          }, 1000);
     }
 ```
+
 #### HTML
 ```HTML
 <PullToRefresh (refresh)="refreshList($event)">
@@ -82,10 +82,10 @@ refreshList(args) {
 </PullToRefresh>
 ```
 
-## Attributes
+## Properties
 **refresh : function** *required*
 
-## API
+## Methods
 
 ### refreshing
 
