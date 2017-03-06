@@ -84,4 +84,4 @@ refreshList(args) {
 
 ## Properties
 - **refresh : function** *required*
-- **refreshing: boolean ** - Notifies the widget that the refresh state has changed.
+- **refreshing: boolean** - Notifies the widget that the refresh state has changed.
