@@ -1,35 +1,19 @@
-﻿import definition = require("pulltorefresh");
-import contentView = require("ui/content-view");
-import dependencyObservable = require("ui/core/dependency-observable");
-import view = require("ui/core/view");
-import proxy = require("ui/core/proxy");
+﻿import { PullToRefresh as PullToRefreshDefinition } from ".";
+import { ContentView } from "ui/content-view";
+import { Property, View } from "ui/core/view";
 
-export class PullToRefresh extends contentView.ContentView implements definition.PullToRefresh {
+export * from "ui/content-view";
+
+export class PullToRefreshBase extends ContentView implements PullToRefreshDefinition {
     public static refreshEvent = "refresh";
-
-    public static refreshingProperty = new dependencyObservable.Property(
-        "refreshing",
-        "PullToRefresh",
-        new proxy.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.None)
-    );
-
-    constructor(options?: view.Options) {
-        super(options);
-    }
-
-    get refreshing(): boolean {
-        return this._getValue(PullToRefresh.refreshingProperty);
-    }
-
-    set refreshing(value: boolean) {
-        this._setValue(PullToRefresh.refreshingProperty, value);
-    }
     
+    public refreshing: boolean;
+
     public _addChildFromBuilder(name: string, value: any) {
         // Copy inheirtable style property values
         var originalColor = value.style.color || null;
         
-        if (value instanceof view.View) {
+        if (value instanceof View) {
             this.content = value;
         }
         
@@ -37,3 +21,9 @@ export class PullToRefresh extends contentView.ContentView implements definition
         value.style.color = originalColor;
     }
 }
+
+export const refreshingProperty = new Property<PullToRefreshBase, boolean>({
+    name: "refreshing",
+    defaultValue: false
+});
+refreshingProperty.register(PullToRefreshBase);

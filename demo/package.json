@@ -1,24 +1,24 @@
 {
-	"nativescript": {
-		"id": "org.nativescript.pulltorefresh",
-		"tns-android": {
-			"version": "2.0.0"
-		},
-		"tns-ios": {
-			"version": "1.7.0"
-		}
-	},
-	"dependencies": {
-		"nativescript-pulltorefresh": "file:..",
-		"tns-core-modules": "latest"
-	},
-	"devDependencies": {
-		"babel-traverse": "6.8.0",
-		"babel-types": "6.8.1",
-		"babylon": "6.8.0",
-		"filewalker": "0.1.2",
-		"lazy": "1.0.11",
-		"nativescript-dev-typescript": "^0.3.1",
-		"typescript": "^1.8.7"
-	}
+  "nativescript": {
+    "id": "org.nativescript.pulltorefresh",
+    "tns-android": {
+      "version": "2.0.0"
+    },
+    "tns-ios": {
+      "version": "3.0.0-rc.2"
+    }
+  },
+  "dependencies": {
+    "nativescript-pulltorefresh": "file:..",
+    "tns-core-modules": "rc"
+  },
+  "devDependencies": {
+    "babel-traverse": "6.8.0",
+    "babel-types": "6.8.1",
+    "babylon": "6.8.0",
+    "filewalker": "0.1.2",
+    "lazy": "1.0.11",
+    "nativescript-dev-typescript": "^0.4.2",
+    "typescript": "~2.2.2"
+  }
 }

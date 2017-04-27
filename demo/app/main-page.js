@@ -1,5 +1,5 @@
 var app = require("application");
-var Observable = require("data/observable").Observable;
+var observableModule = require("data/observable");
 var ObservableArray = require("data/observable-array").ObservableArray;
 var platformModule = require("platform");
 var color = require("color");
@@ -14,7 +14,7 @@ var users = [
     { name: 'William' },
     { name: 'Franklin' }
 ];
-var viewModel = new Observable({
+var viewModel = observableModule.fromObject({
     users: new ObservableArray(users)
 });
 

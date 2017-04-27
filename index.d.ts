@@ -24,7 +24,7 @@ export declare class PullToRefresh extends ContentView {
     /**
      * Returns the native iOS UIRefreshControl
      */
-    refreshControl: any /// UIRefreshControl
+    refreshControl?: any /// UIRefreshControl
 
     /*
     * Gets or sets if the view is refreshing

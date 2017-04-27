@@ -5,10 +5,21 @@
         "removeComments": true,
         "experimentalDecorators": true,
         "sourceMap": true,
-        "noEmitHelpers": true
+        "noEmitHelpers": true,
+        "lib": ["es6", "dom"],
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+            "./node_modules/tns-core-modules/*",
+            "./node_modules/*"
+            ]
+        }
+        
     },
     "files": [
-      "demo/node_modules/tns-core-modules/tns-core-modules.d.ts",
+      "node_modules/tns-core-modules/tns-core-modules.d.ts",
+      "node_modules/tns-platform-declarations/ios.d.ts",
+      "node_modules/tns-platform-declarations/android.d.ts",
       "pulltorefresh-common.ts",
       "pulltorefresh.android.ts",
       "pulltorefresh.ios.ts"
