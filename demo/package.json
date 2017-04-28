@@ -1,11 +1,11 @@
 {
   "nativescript": {
     "id": "org.nativescript.pulltorefresh",
-    "tns-android": {
-      "version": "2.0.0"
-    },
     "tns-ios": {
       "version": "3.0.0-rc.2"
+    },
+    "tns-android": {
+      "version": "3.0.0-rc.1"
     }
   },
   "dependencies": {

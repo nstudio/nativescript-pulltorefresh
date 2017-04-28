@@ -8,3 +8,4 @@ screens/
 *.ts
 !*.d.ts
 tsconfig.json
+*.map

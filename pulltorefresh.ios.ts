@@ -89,6 +89,5 @@ export class PullToRefresh extends PullToRefreshBase {
         const color = value instanceof Color ? value.ios : value;
 
         this.refreshControl.backgroundColor = color;
-    }
-    
+    }    
 }

@@ -1,10 +1,11 @@
 import { ContentView } from 'ui/content-view';
 
+export * from "ui/content-view";
+
 /**
  * Contains the PullToRefresh class, which represents a Layout that contains the UI pattern for pull-to-refresh
  */
-
-export declare class PullToRefresh extends ContentView {
+export class PullToRefresh extends ContentView {
 
     /**
      * String value used when hooking to the onRefresh event.
