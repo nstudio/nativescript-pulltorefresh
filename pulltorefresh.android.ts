@@ -50,12 +50,12 @@ export class PullToRefresh extends PullToRefreshBase {
     
     [colorProperty.setNative](value: Color | number) {
         const color = value instanceof Color ? value.android : value;
-        this.nativeView.setProgressBackgroundColorSchemeColor(color);
+        this.nativeView.setColorSchemeColors([color]);
     }
 
     [backgroundColorProperty.setNative](value: Color | number) {
         const color = value instanceof Color ? value.android : value;
-        this.nativeView.setColorSchemeColors(color);
+        this.nativeView.setProgressBackgroundColorSchemeColor(color);
     }
 }
 
