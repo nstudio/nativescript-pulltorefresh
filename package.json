@@ -1,67 +1,77 @@
 {
-	"name": "nativescript-pulltorefresh",
-	"version": "2.0.1",
-	"description": "A NativeScript plugin to provide the Pull to Refresh control on any view.",
-	"main": "pulltorefresh",
-	"typings": "index.d.ts",
-	"nativescript": {
-		"platforms": {
-			"ios": "3.0.0-rc.1",
-			"android": "3.0.0-rc.1"
-		},
-		"plugin": {
-			"nan": "true",
-			"pan": "true",
-			"core3": "true",
-			"category": "Interface"
-		}
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/bradmartin/nativescript-pulltorefresh"
-	},
-	"keywords": [
-		"NativeScript",
-		"native",
-		"script",
-		"Pull Refresh",
-		"SwipeRefreshLayout",
-		"Material Design",
-		"UIRefreshControl",
-		"android",
-		"ios",
-		"bradmartin",
-		"Thorum"
-	],
-	"contributors": [
-		{
-			"name": "Nathanael Anderson",
-			"email": "nathan@master-technology",
-			"url": "https://github.com/nathanaela"
-		},
-		{
-			"name": "Peter Staev",
-			"email": "peter@tangrasoft.com",
-			"url": "https://github.com/PeterStaev"
-		},
-		{
-			"name": "Andrew Halls",
-			"email": "andrew@galtsoft.com",
-			"url": "https://github.com/ahalls"
-		}
-	],
-	"author": "Brad Martin <bradwaynemartin@gmail.com> (https://github.com/bradmartin)",
-	"license": "Apache-2.0",
-	"bugs": "https://github.com/bradmartin/nativescript-pulltorefresh/issues",
-	"homepage": "https://github.com/bradmartin/nativescript-pulltorefresh",
-
-	"peerDependencies": {
-		"tns-core-modules": "^3.0.0 || ^3.0.0-rc.1"
-	},
-	
-	"devDependencies": {
-		"typescript": "~2.2.2",
-		"tns-core-modules": "rc",
-		"tns-platform-declarations": "rc"
-	}	
+  "name": "nativescript-pulltorefresh",
+  "version": "2.0.1",
+  "description": "A NativeScript plugin to provide the Pull to Refresh control on any view.",
+  "main": "pulltorefresh",
+  "typings": "index.d.ts",
+  "nativescript": {
+    "platforms": {
+      "ios": "3.0.0-rc.1",
+      "android": "3.0.0-rc.1"
+    },
+    "plugin": {
+      "nan": "true",
+      "pan": "true",
+      "core3": "true",
+      "category": "Interface"
+    }
+  },
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bradmartin/nativescript-pulltorefresh"
+  },
+  "keywords": [
+    "NativeScript",
+    "native",
+    "script",
+    "Pull Refresh",
+    "SwipeRefreshLayout",
+    "Material Design",
+    "UIRefreshControl",
+    "android",
+    "ios",
+    "bradmartin",
+    "Thorum"
+  ],
+  "contributors": [
+    {
+      "name": "Nathanael Anderson",
+      "email": "nathan@master-technology",
+      "url": "https://github.com/nathanaela"
+    },
+    {
+      "name": "Peter Staev",
+      "email": "peter@tangrasoft.com",
+      "url": "https://github.com/PeterStaev"
+    },
+    {
+      "name": "Andrew Halls",
+      "email": "andrew@galtsoft.com",
+      "url": "https://github.com/ahalls"
+    }
+  ],
+  "author": "Brad Martin <bradwaynemartin@gmail.com> (https://github.com/bradmartin)",
+  "license": "Apache-2.0",
+  "bugs": "https://github.com/bradmartin/nativescript-pulltorefresh/issues",
+  "homepage": "https://github.com/bradmartin/nativescript-pulltorefresh",
+  "peerDependencies": {
+    "tns-core-modules": "^3.0.0 || ^3.0.0-rc.1"
+  },
+  "devDependencies": {
+    "husky": "^0.13.4",
+    "lint-staged": "^3.6.1",
+    "prettier": "^1.4.4",
+    "tns-core-modules": "rc",
+    "tns-platform-declarations": "rc",
+    "typescript": "~2.2.2"
+  }
 }
