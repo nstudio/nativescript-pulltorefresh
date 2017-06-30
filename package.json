@@ -1,13 +1,13 @@
 {
   "name": "nativescript-pulltorefresh",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A NativeScript plugin to provide the Pull to Refresh control on any view.",
   "main": "pulltorefresh",
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
-      "ios": "3.0.0-rc.1",
-      "android": "3.0.0-rc.1"
+      "ios": "3.0.1",
+      "android": "3.0.1"
     },
     "plugin": {
       "nan": "true",
@@ -64,14 +64,14 @@
   "bugs": "https://github.com/bradmartin/nativescript-pulltorefresh/issues",
   "homepage": "https://github.com/bradmartin/nativescript-pulltorefresh",
   "peerDependencies": {
-    "tns-core-modules": "^3.0.0 || ^3.0.0-rc.1"
+    "tns-core-modules": "^3.0.0"
   },
   "devDependencies": {
     "husky": "^0.13.4",
     "lint-staged": "^3.6.1",
     "prettier": "^1.4.4",
-    "tns-core-modules": "rc",
-    "tns-platform-declarations": "rc",
+    "tns-core-modules": "~3.0.0",
+    "tns-platform-declarations": "~3.0.0",
     "typescript": "~2.2.2"
   }
 }
