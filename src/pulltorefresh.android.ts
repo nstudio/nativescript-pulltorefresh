@@ -1,8 +1,8 @@
 import {
   PullToRefreshBase,
-  refreshingProperty,
   colorProperty,
-  backgroundColorProperty
+  backgroundColorProperty,
+  refreshingProperty
 } from "./pulltorefresh-common";
 import { Color } from "tns-core-modules/color";
 
@@ -11,16 +11,15 @@ export * from "./pulltorefresh-common";
 export class PullToRefresh extends PullToRefreshBase {
   private _androidViewId: number;
 
-  public nativeView: android.support.v4.widget.SwipeRefreshLayout;
+  public nativeView: any; // android.support.v4.widget.SwipeRefreshLayout;
 
-  get android(): android.support.v4.widget.SwipeRefreshLayout {
-    return this.nativeView;
+  get android(): any {
+    return this.nativeView; // android.support.v4.widget.SwipeRefreshLayout
   }
 
   public createNativeView() {
-    const swipeRefreshLayout = new android.support.v4.widget.SwipeRefreshLayout(
-      this._context
-    );
+    const swipeRefreshLayout = new (android.support.v4
+      .widget as any).SwipeRefreshLayout(this._context);
 
     if (!this._androidViewId) {
       this._androidViewId = android.view.View.generateViewId();
@@ -66,9 +65,11 @@ export class PullToRefresh extends PullToRefreshBase {
   }
 }
 
-@Interfaces([android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener])
-class TNS_SwipeRefreshListener extends java.lang.Object
-  implements android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
+@Interfaces([
+  (android.support.v4.widget as any).SwipeRefreshLayout.OnRefreshListener
+])
+// tslint:disable-next-line:class-name
+class TNS_SwipeRefreshListener extends java.lang.Object {
   constructor(private owner: WeakRef<PullToRefresh>) {
     super();
 
@@ -76,7 +77,7 @@ class TNS_SwipeRefreshListener extends java.lang.Object
   }
 
   public onRefresh(v) {
-    var owner = this.owner.get();
+    const owner = this.owner.get();
 
     if (owner) {
       owner.refreshing = true;

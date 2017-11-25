@@ -18,13 +18,13 @@ class PullToRefreshHandler extends NSObject {
   public static initWithOnwer(
     owner: WeakRef<PullToRefresh>
   ): PullToRefreshHandler {
-    var impl = <PullToRefreshHandler>PullToRefreshHandler.new();
+    const impl = <PullToRefreshHandler>PullToRefreshHandler.new();
     impl._owner = owner;
     return impl;
   }
 
   public handleRefresh(refreshControl: UIRefreshControl) {
-    var pullToRefresh = this._owner.get();
+    const pullToRefresh = this._owner.get();
     pullToRefresh.refreshing = true;
     pullToRefresh.notify({
       eventName: PullToRefreshBase.refreshEvent,
