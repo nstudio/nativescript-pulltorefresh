@@ -1,7 +1,8 @@
 {
   "name": "nativescript-pulltorefresh",
   "version": "2.0.2",
-  "description": "A NativeScript plugin to provide the Pull to Refresh control on any view.",
+  "description":
+    "A NativeScript plugin to provide the Pull to Refresh control on any view.",
   "main": "pulltorefresh",
   "typings": "index.d.ts",
   "nativescript": {
@@ -20,10 +21,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.ts": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.ts": ["prettier --write", "git add"]
   },
   "repository": {
     "type": "git",
@@ -57,9 +55,27 @@
       "name": "Andrew Halls",
       "email": "andrew@galtsoft.com",
       "url": "https://github.com/ahalls"
+    },
+    {
+      "name": "Manojkumar Murugesan",
+      "url": "https://github.com/manojdcoder"
+    },
+    {
+      "name": "Ravi",
+      "url": "https://github.com/dlucidone",
+      "email": "jackravi227@gmail.com"
+    },
+    {
+      "name": "Leo Caseiro",
+      "url": "https://github.com/leocaseiro"
+    },
+    {
+      "name": "Matthew Green",
+      "url": "https://github.com/matt4446"
     }
   ],
-  "author": "Brad Martin <bradwaynemartin@gmail.com> (https://github.com/bradmartin)",
+  "author":
+    "Brad Martin <bradwaynemartin@gmail.com> (https://github.com/bradmartin)",
   "license": "Apache-2.0",
   "bugs": "https://github.com/bradmartin/nativescript-pulltorefresh/issues",
   "homepage": "https://github.com/bradmartin/nativescript-pulltorefresh",
