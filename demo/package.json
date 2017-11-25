@@ -6,7 +6,7 @@
     }
   },
   "dependencies": {
-    "nativescript-pulltorefresh": "file:..",
+    "nativescript-pulltorefresh": "../src",
     "tns-core-modules": "^3.3.0"
   },
   "devDependencies": {
