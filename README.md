@@ -82,6 +82,31 @@ refreshList(args) {
 </PullToRefresh>
 ```
 
+### Webpack
+If you are using webpack with **uglify** for Android, you must add [SewipeRefreshListener](pulltorefresh.android.ts#L70) to the mangle exception list.
+
+#### webpack.config.js
+```JS
+    if (env.uglify) {
+         plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
+ 
+         const mangle =  {
+            except: [
+                ...nsWebpack.uglifyMangleExcludes,
+                "SewipeRefreshListener" 
+            ]
+         };
+        
+         // Work around an Android issue by setting compress = false
+         const compress = platform !== "android";
+         
+         plugins.push(new webpack.optimize.UglifyJsPlugin({
+            mangle,
+            compress,
+         }));
+     }
+```
+
 ## Properties
 - **refresh : function** *required*
 - **refreshing: boolean** - Notifies the widget that the refresh state has changed.
