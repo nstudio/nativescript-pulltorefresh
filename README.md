@@ -2,26 +2,29 @@
 [![npm](https://img.shields.io/npm/dt/nativescript-pulltorefresh.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-pulltorefresh)
 
 # NativeScript-PullToRefresh :recycle:
-NativeScript plugin to use Pull to Refresh on any view. 
 
-#### [Android - *SwipeRefreshLayout*](http://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html)
+NativeScript plugin to use Pull to Refresh on any view.
 
-#### [iOS - *UIRefreshControl*](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIRefreshControl_class/)
+#### [Android - _SwipeRefreshLayout_](http://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html)
+
+#### [iOS - _UIRefreshControl_](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIRefreshControl_class/)
 
 ### Sample Screen
 
-Android |  iOS
--------- | ---------
-![Android Sample](screens/android_refresh.gif) | ![iOS Sample](screens/ios_refresh.gif)
-
+| Android                                        | iOS                                    |
+| ---------------------------------------------- | -------------------------------------- |
+| ![Android Sample](screens/android_refresh.gif) | ![iOS Sample](screens/ios_refresh.gif) |
 
 ## Installation
+
 `tns plugin add nativescript-pulltorefresh`
 
 ## Usage
 
 ### Vanilla NativeScript
+
 #### XML
+
 ```XML
 <page xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:PullRefresh="nativescript-pulltorefresh"
@@ -29,14 +32,15 @@ Android |  iOS
     <PullRefresh:PullToRefresh refresh="refreshList">
         <list-view items="{{ users }}">
             <list-view.itemTemplate>
-                <label text="{{ name }}" row="0" col="1"textWrap="true" class="message" />             
+                <label text="{{ name }}" row="0" col="1"textWrap="true" class="message" />
             </list-view.itemTemplate>
         </list-view>
-    </PullRefresh:PullToRefresh>        
+    </PullRefresh:PullToRefresh>
 </page>
 ```
 
 #### JS
+
 ```JS
 function refreshList(args) {
 
@@ -55,6 +59,7 @@ function refreshList(args) {
 }
 exports.refreshList = refreshList;
 ```
+
 ### Angular NativeScript
 
 ```TS
@@ -70,6 +75,7 @@ refreshList(args) {
 ```
 
 #### HTML
+
 ```HTML
 <PullToRefresh (refresh)="refreshList($event)">
     <ListView [items]="itemList" >
@@ -81,23 +87,27 @@ refreshList(args) {
 ```
 
 ### Webpack
-If you are using webpack with **uglify** for Android, you must add [SwipeRefreshListener](pulltorefresh.android.ts#L70) to the mangle exception list.
+
+If you are using webpack with **uglify** for Android, you must add
+[SwipeRefreshListener](pulltorefresh.android.ts#L70) to the mangle exception
+list.
 
 #### webpack.config.js
+
 ```JS
     if (env.uglify) {
          plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
- 
+
          const mangle =  {
             except: [
                 ...nsWebpack.uglifyMangleExcludes,
-                "SwipeRefreshListener" 
+                "TNS_SwipeRefreshListener"
             ]
          };
-        
+
          // Work around an Android issue by setting compress = false
          const compress = platform !== "android";
-         
+
          plugins.push(new webpack.optimize.UglifyJsPlugin({
             mangle,
             compress,
@@ -106,5 +116,7 @@ If you are using webpack with **uglify** for Android, you must add [SwipeRefresh
 ```
 
 ## Properties
-- **refresh : function** *required*
-- **refreshing: boolean** - Notifies the widget that the refresh state has changed.
+
+* **refresh : function** _required_
+* **refreshing: boolean** - Notifies the widget that the refresh state has
+  changed.

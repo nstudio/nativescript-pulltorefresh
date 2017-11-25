@@ -1,8 +1,8 @@
 import { PullToRefresh as PullToRefreshDefinition } from ".";
-import { ContentView } from "ui/content-view";
-import { Property, View } from "ui/core/view";
+import { ContentView } from "tns-core-modules/ui/content-view";
+import { Property, View } from "tns-core-modules/ui/core/view";
 
-export * from "ui/content-view";
+export * from "tns-core-modules/ui/content-view";
 
 export class PullToRefreshBase extends ContentView
   implements PullToRefreshDefinition {

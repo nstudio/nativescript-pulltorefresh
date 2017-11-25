@@ -4,7 +4,7 @@ import {
   colorProperty,
   backgroundColorProperty
 } from "./pulltorefresh-common";
-import { Color } from "color";
+import { Color } from "tns-core-modules/color";
 
 export * from "./pulltorefresh-common";
 
@@ -27,7 +27,7 @@ export class PullToRefresh extends PullToRefreshBase {
     }
     swipeRefreshLayout.setId(this._androidViewId);
 
-    const refreshListener = new SewipeRefreshListener(new WeakRef(this));
+    const refreshListener = new TNS_SwipeRefreshListener(new WeakRef(this));
     swipeRefreshLayout.setOnRefreshListener(refreshListener);
     (swipeRefreshLayout as any).refreshListener = refreshListener;
 
@@ -67,7 +67,7 @@ export class PullToRefresh extends PullToRefreshBase {
 }
 
 @Interfaces([android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener])
-class SewipeRefreshListener extends java.lang.Object
+class TNS_SwipeRefreshListener extends java.lang.Object
   implements android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
   constructor(private owner: WeakRef<PullToRefresh>) {
     super();

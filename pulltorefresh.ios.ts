@@ -4,7 +4,7 @@ import {
   colorProperty,
   backgroundColorProperty
 } from "./pulltorefresh-common";
-import { Color } from "color";
+import { Color } from "tns-core-modules/color";
 
 export * from "./pulltorefresh-common";
 
