@@ -89,7 +89,7 @@ refreshList(args) {
 ### Webpack
 
 If you are using webpack with **uglify** for Android, you must add
-[SwipeRefreshListener](pulltorefresh.android.ts#L70) to the mangle exception
+[TNS_wipeRefreshListener](./pulltorefresh.android.ts#L72) to the mangle exception
 list.
 
 #### webpack.config.js
