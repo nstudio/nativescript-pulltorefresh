@@ -5,8 +5,8 @@
         <action-bar title="Pull To Refresh :)" backgroundColor="#2196F3" color="#f1f1f1" />
     </page.actionBar>
     <stack-layout>   
-        <PullRefresh:PullToRefresh loaded="swipeLoaded" refresh="refreshList" color="#3489db">
-            <list-view items="{{ users }}">
+        <PullRefresh:PullToRefresh loaded="swipeLoaded" refresh="refreshList" backgroundColor="#fff000" color="#3489db">
+            <list-view items="{{ users }}" backgroundColor="white">
                 <list-view.itemTemplate>
                     <label text="{{ name }}" row="0" col="1" textWrap="true" class="message" />                            
                 </list-view.itemTemplate>

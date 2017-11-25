@@ -11,8 +11,9 @@ export class PullToRefreshBase extends ContentView
   public refreshing: boolean;
 
   public _addChildFromBuilder(name: string, value: any) {
-    // copy inheirtable style property values
-    var originalColor = value.style.color || null;
+    // copy inheritable style property values
+    const originalColor = value.style.color || null;
+    const originaBackgroundColor = value.style.backgroundColor || null;
 
     if (value instanceof View) {
       this.content = value;
@@ -20,6 +21,7 @@ export class PullToRefreshBase extends ContentView
 
     // reset inheritable style property values as we do not want those to be inherited
     value.style.color = originalColor;
+    value.style.backgroundColor = originaBackgroundColor;
   }
 }
 
