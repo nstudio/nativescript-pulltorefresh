@@ -26,15 +26,13 @@ Android |  iOS
 <page xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:PullRefresh="nativescript-pulltorefresh"
       loaded="pageLoaded">
-    <stack-layout>   
-        <PullRefresh:PullToRefresh refresh="refreshList">
-            <list-view items="{{ users }}">
-                <list-view.itemTemplate>
-                    <label text="{{ name }}" row="0" col="1" textWrap="true" class="message" />                            
-                </list-view.itemTemplate>
-            </list-view>
-        </PullRefresh:PullToRefresh>        
-    </stack-layout>
+    <PullRefresh:PullToRefresh refresh="refreshList">
+        <list-view items="{{ users }}">
+            <list-view.itemTemplate>
+                <label text="{{ name }}" row="0" col="1"textWrap="true" class="message" />             
+            </list-view.itemTemplate>
+        </list-view>
+    </PullRefresh:PullToRefresh>        
 </page>
 ```
 
@@ -42,16 +40,16 @@ Android |  iOS
 ```JS
 function refreshList(args) {
 
-    // Get reference to the PullToRefresh;
+    // Get reference to the PullToRefresh component;
     var pullRefresh = args.object;
 
     // Do work here... and when done call set refreshing property to false to stop the refreshing
-    loadItems().then(function (resp) {
+    loadItems().then((resp) => {
         // ONLY USING A TIMEOUT TO SIMULATE/SHOW OFF THE REFRESHING
-        setTimeout(function () {
+        setTimeout(() => {
             pullRefresh.refreshing = false;
         }, 1000);
-    }, function (err) {
+    }, (err) => {
         pullRefresh.refreshing = false;
     });
 }
@@ -83,7 +81,7 @@ refreshList(args) {
 ```
 
 ### Webpack
-If you are using webpack with **uglify** for Android, you must add [SewipeRefreshListener](pulltorefresh.android.ts#L70) to the mangle exception list.
+If you are using webpack with **uglify** for Android, you must add [SwipeRefreshListener](pulltorefresh.android.ts#L70) to the mangle exception list.
 
 #### webpack.config.js
 ```JS
@@ -93,7 +91,7 @@ If you are using webpack with **uglify** for Android, you must add [SewipeRefres
          const mangle =  {
             except: [
                 ...nsWebpack.uglifyMangleExcludes,
-                "SewipeRefreshListener" 
+                "SwipeRefreshListener" 
             ]
          };
         
