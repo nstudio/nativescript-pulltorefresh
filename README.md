@@ -1,5 +1,9 @@
 [![npm](https://img.shields.io/npm/v/nativescript-pulltorefresh.svg)](https://www.npmjs.com/package/nativescript-pulltorefresh)
 [![npm](https://img.shields.io/npm/dt/nativescript-pulltorefresh.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-pulltorefresh)
+[![GitHub stars](https://img.shields.io/github/stars/bradmartin/nativescript-pulltorefresh.svg)](https://github.com/bradmartin/nativescript-pulltorefresh/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/bradmartin/nativescript-pulltorefresh.svg)](https://github.com/bradmartin/nativescript-pulltorefresh/network)
+[![PayPal Donate](https://img.shields.io/badge/Donate-PayPal-ff4081.svg)](https://www.paypal.me/bradwayne88)
+
 
 # NativeScript-PullToRefresh :recycle:
 
