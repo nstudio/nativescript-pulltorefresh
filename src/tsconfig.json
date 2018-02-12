@@ -6,6 +6,7 @@
         "experimentalDecorators": true,
         "sourceMap": true,
         "noEmitHelpers": true,
+        "noEmitOnError": false,
         "lib": ["es6", "dom"],
         "baseUrl": ".",
         "paths": {
