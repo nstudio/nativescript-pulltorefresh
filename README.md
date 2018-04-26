@@ -99,24 +99,18 @@ list.
 #### webpack.config.js
 
 ```JS
-    if (env.uglify) {
-         plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
+if (uglify) {
+    config.plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
 
-         const mangle =  {
-            except: [
-                ...nsWebpack.uglifyMangleExcludes,
-                "TNS_SwipeRefreshListener"
-            ]
-         };
-
-         // Work around an Android issue by setting compress = false
-         const compress = platform !== "android";
-
-         plugins.push(new webpack.optimize.UglifyJsPlugin({
-            mangle,
+    // Work around an Android issue by setting compress = false
+    const compress = platform !== "android";
+    config.plugins.push(new UglifyJsPlugin({
+        uglifyOptions: {
+            mangle: { reserved: [ ...nsWebpack.uglifyMangleExcludes, "TNS_SwipeRefreshListener" ] },
             compress,
-         }));
-     }
+        }
+    }));
+}
 ```
 
 ## Properties
