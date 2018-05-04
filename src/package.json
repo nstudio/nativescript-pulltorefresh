@@ -113,7 +113,7 @@
   "bugs": "https://github.com/bradmartin/nativescript-pulltorefresh/issues",
   "homepage": "https://github.com/bradmartin/nativescript-pulltorefresh",
   "peerDependencies": {
-    "tns-core-modules": "^3.0.0"
+    "tns-core-modules": "^3.0.0 || >=4.0.0 || >=4.1.0"
   },
   "devDependencies": {
     "husky": "^0.13.4",
