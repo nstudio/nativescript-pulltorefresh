@@ -1,10 +1,12 @@
+/// <reference path="./node_modules/tns-platform-declarations/ios/ios.d.ts" />
+
+import { Color } from "tns-core-modules/color";
 import {
   PullToRefreshBase,
-  refreshingProperty,
+  backgroundColorProperty,
   colorProperty,
-  backgroundColorProperty
+  refreshingProperty
 } from "./pulltorefresh-common";
-import { Color } from "tns-core-modules/color";
 
 export * from "./pulltorefresh-common";
 
@@ -70,7 +72,9 @@ export class PullToRefresh extends PullToRefreshBase {
 
       this.content.ios.scrollView.addSubview(this.refreshControl);
     } else {
-      throw new Error("Content must inherit from either UIScrollView, UIWebView or WKWebView!");
+      throw new Error(
+        "Content must inherit from either UIScrollView, UIWebView or WKWebView!"
+      );
     }
   }
 

@@ -1,10 +1,12 @@
+/// <reference path="./node_modules/tns-platform-declarations/android/android.d.ts" />
+
+import { Color } from "tns-core-modules/color";
 import {
   PullToRefreshBase,
-  colorProperty,
   backgroundColorProperty,
+  colorProperty,
   refreshingProperty
 } from "./pulltorefresh-common";
-import { Color } from "tns-core-modules/color";
 
 export * from "./pulltorefresh-common";
 

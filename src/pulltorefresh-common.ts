@@ -1,6 +1,6 @@
-import { PullToRefresh as PullToRefreshDefinition } from ".";
 import { ContentView } from "tns-core-modules/ui/content-view";
 import { Property, View } from "tns-core-modules/ui/core/view";
+import { PullToRefresh as PullToRefreshDefinition } from ".";
 
 export * from "tns-core-modules/ui/content-view";
 
