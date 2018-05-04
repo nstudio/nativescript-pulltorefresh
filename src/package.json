@@ -1,8 +1,7 @@
 {
   "name": "nativescript-pulltorefresh",
-  "version": "2.1.0",
-  "description":
-    "A NativeScript plugin to provide the Pull to Refresh control on any view.",
+  "version": "2.1.1",
+  "description": "A NativeScript plugin to provide the Pull to Refresh control on any view.",
   "main": "pulltorefresh",
   "typings": "index.d.ts",
   "nativescript": {
@@ -22,35 +21,27 @@
     "tsc": "tsc -skipLibCheck",
     "build": "npm i && tsc",
     "demo.ios": "npm run preparedemo && cd ../demo && tns run ios --emulator",
-    "demo.ios.device":
-      "npm run preparedemo && cd ../demo && tns platform remove ios && tns run ios",
-    "demo.android":
-      "npm run preparedemo && cd ../demo && tns platform remove android && tns run android --justlaunch",
-    "test":
-      "npm run tslint && npm run tslint.demo && cd ../demo && tns build ios && tns build android",
-    "test.ios":
-      "cd ../demo && tns platform remove ios && tns test ios --emulator",
+    "demo.ios.device": "npm run preparedemo && cd ../demo && tns platform remove ios && tns run ios",
+    "demo.android": "npm run preparedemo && cd ../demo && tns platform remove android && tns run android --justlaunch",
+    "test": "npm run tslint && npm run tslint.demo && cd ../demo && tns build ios && tns build android",
+    "test.ios": "cd ../demo && tns platform remove ios && tns test ios --emulator",
     "test.ios.device": "cd ../demo && tns platform remove ios && tns test ios",
-    "test.android":
-      "cd ../demo && tns platform remove android && tns test android --justlaunch",
-    "preparedemo":
-      "npm run build && cd ../demo && tns plugin remove nativescript-pulltorefresh && tns plugin add ../src && tns install",
+    "test.android": "cd ../demo && tns platform remove android && tns test android --justlaunch",
+    "preparedemo": "npm run build && cd ../demo && tns plugin remove nativescript-pulltorefresh && tns plugin add ../src && tns install",
     "setup": "npm run build && cd ../demo && npm i",
-    "setupandinstall":
-      "npm i && cd ../demo && npm i && cd ../src && npm run build && cd ../demo && tns plugin add ../src && cd ../src",
-    "tslint":
-      "tslint --config '../tslint.json' '*.ts' --exclude '**/node_modules/**'",
-    "tslint.demo":
-      "tslint --config '../tslint.json' '../demo/app/*.ts' --exclude '**/node_modules/**'",
+    "setupandinstall": "npm i && cd ../demo && npm i && cd ../src && npm run build && cd ../demo && tns plugin add ../src && cd ../src",
+    "tslint": "tslint --config '../tslint.json' '*.ts' --exclude '**/node_modules/**'",
+    "tslint.demo": "tslint --config '../tslint.json' '../demo/app/*.ts' --exclude '**/node_modules/**'",
     "ci.tslint": "npm run tslint && npm run tslint.demo",
     "prepublishOnly": "npm run build",
-    "development.setup":
-      "npm run setup && npm link && cd ../demo && npm link nativescript-pulltorefresh && cd ../src",
-    "generate.typings.ios":
-      "cd ../demo && TNS_DEBUG_METADATA_PATH=\"$(pwd)/metadata\" tns build ios && TNS_TYPESCRIPT_DECLARATIONS_PATH=\"$(pwd)/typings\" tns build ios && echo 'Now look for your library typings in demo/typings!'"
+    "development.setup": "npm run setup && npm link && cd ../demo && npm link nativescript-pulltorefresh && cd ../src",
+    "generate.typings.ios": "cd ../demo && TNS_DEBUG_METADATA_PATH=\"$(pwd)/metadata\" tns build ios && TNS_TYPESCRIPT_DECLARATIONS_PATH=\"$(pwd)/typings\" tns build ios && echo 'Now look for your library typings in demo/typings!'"
   },
   "lint-staged": {
-    "*.ts": ["prettier --write", "git add"]
+    "*.ts": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -116,13 +107,13 @@
     "tns-core-modules": "^3.0.0 || >=4.0.0 || >=4.1.0"
   },
   "devDependencies": {
-    "husky": "^0.13.4",
-    "lint-staged": "^3.6.1",
-    "prettier": "^1.4.4",
-    "tns-core-modules": "^3.1.0",
-    "tns-platform-declarations": "^3.1.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.5",
+    "prettier": "^1.12.1",
+    "tns-core-modules": "^4.0.0",
+    "tns-platform-declarations": "^4.0.0",
     "rimraf": "^2.5.0",
-    "tslint": "~5.4.3",
-    "typescript": "~2.3.0"
+    "tslint": "~5.10.0",
+    "typescript": "~2.8.3"
   }
 }
