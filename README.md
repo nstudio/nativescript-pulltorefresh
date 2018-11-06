@@ -90,6 +90,44 @@ refreshList(args) {
 </PullToRefresh>
 ```
 
+### NativeScript Vue
+
+```javascript
+import Vue from 'nativescript-vue';
+
+Vue.registerElement('PullToRefresh', () => require('nativescript-pulltorefresh').PullToRefresh);
+```
+
+#### Component
+
+```vue
+<template>
+    <Page>
+        <PullToRefresh @refresh="refreshList">
+          <ListView for="item in listOfItems" @itemTap="onItemTap">
+            <v-template>
+              <!-- Shows the list item label in the default color and style. -->
+              <Label :text="item.text" />
+            </v-template>
+          </ListView>
+        </PullToRefresh>
+    </Page>
+</template>
+
+<script>
+export default {
+    methods: {
+        refreshList(args) {
+            var pullRefresh = args.object;
+            setTimeout(function () {
+                pullRefresh.refreshing = false;
+            }, 1000);
+        }
+    }
+}
+</script>
+```
+
 ### Webpack
 
 If you are using webpack with **uglify** for Android, you must add
