@@ -7,7 +7,9 @@ lib
 demo/app/*.js
 demo/*.d.ts
 demo/platforms
+demo/hooks
 demo/node_modules
 node_modules
+hooks
 *.DS_Store
 demo/app/ptr/*
