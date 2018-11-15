@@ -1,30 +1,25 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "removeComments": true,
-        "experimentalDecorators": true,
-        "sourceMap": true,
-        "noEmitHelpers": true,
-        "noEmitOnError": false,
-        "lib": ["es6", "dom"],
-        "baseUrl": ".",
-        "paths": {
-            "*": [
-            "./node_modules/tns-core-modules/*",
-            "./node_modules/*"
-            ]
-        }
-        
-    },
-    "files": [
-      "node_modules/tns-core-modules/tns-core-modules.d.ts",
-      "node_modules/tns-platform-declarations/ios.d.ts",
-      "node_modules/tns-platform-declarations/android.d.ts",
-      "node_modules/nativescript-ui-listview/platforms/ios/typings/listview.d.ts",
-      "pulltorefresh-common.ts",
-      "pulltorefresh.android.ts",
-      "pulltorefresh.ios.ts"
-    ],
-    "compileOnSave": false
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "pretty": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noEmitHelpers": true,
+    "noEmitOnError": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitUseStrict": false,
+    "noFallthroughCasesInSwitch": true
+  },
+  "exclude": ["node_modules"],
+  "compileOnSave": false
 }
