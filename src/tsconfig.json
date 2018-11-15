@@ -21,6 +21,7 @@
       "node_modules/tns-core-modules/tns-core-modules.d.ts",
       "node_modules/tns-platform-declarations/ios.d.ts",
       "node_modules/tns-platform-declarations/android.d.ts",
+      "node_modules/nativescript-ui-listview/platforms/ios/typings/listview.d.ts",
       "pulltorefresh-common.ts",
       "pulltorefresh.android.ts",
       "pulltorefresh.ios.ts"
