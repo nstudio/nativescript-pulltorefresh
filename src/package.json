@@ -19,7 +19,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "tsc": "tsc -skipLibCheck",
-    "build": "npm i && tsc",
+    "build": "npm i && tsc --skipLibCheck",
     "demo.ios": "npm run preparedemo && cd ../demo && tns run ios --emulator",
     "demo.ios.device": "npm run preparedemo && cd ../demo && tns platform remove ios && tns run ios",
     "demo.android": "npm run preparedemo && cd ../demo && tns platform remove android && tns run android --justlaunch",
@@ -35,10 +35,11 @@
     "ci.tslint": "npm run tslint && npm run tslint.demo",
     "prepublishOnly": "npm run build",
     "development.setup": "npm run setup && npm link && cd ../demo && npm link nativescript-pulltorefresh && cd ../src",
-    "generate.typings.ios": "cd ../demo && TNS_DEBUG_METADATA_PATH=\"$(pwd)/metadata\" tns build ios && TNS_TYPESCRIPT_DECLARATIONS_PATH=\"$(pwd)/typings\" tns build ios && echo 'Now look for your library typings in demo/typings!'"
+    "generate.typings.ios": "cd ../demo && TNS_DEBUG_METADATA_PATH=\"$(pwd)/metadata\" tns build ios && TNS_TYPESCRIPT_DECLARATIONS_PATH=\"$(pwd)/typings\" tns build ios && echo 'Now look for your library typings in demo/typings!'",
+    "make-changelog": "cd ../ && github_changelog_generator -u bradmartin -p nativescript-pulltorefresh"
   },
   "lint-staged": {
-    "*.ts": [
+    "*.ts, *.js, *.css, *.scss, *.md": [
       "prettier --write",
       "git add"
     ]
@@ -107,14 +108,14 @@
     "tns-core-modules": "^3.0.0 || >=4.0.0 || >=4.1.0"
   },
   "devDependencies": {
-    "husky": "^0.14.3",
-    "lint-staged": "^7.0.5",
+    "husky": "^1.1.4",
+    "lint-staged": "^8.0.4",
     "nativescript-ui-listview": "^3.8.0",
-    "prettier": "^1.12.1",
+    "prettier": "^1.15.2",
     "rimraf": "^2.5.0",
-    "tns-core-modules": "^4.0.0",
-    "tns-platform-declarations": "^4.0.0",
-    "tslint": "~5.10.0",
-    "typescript": "~2.8.3"
+    "tns-core-modules": "^5.0.2",
+    "tns-platform-declarations": "^5.0.2",
+    "tslint": "~5.11.0",
+    "typescript": "~2.8.2"
   }
 }
