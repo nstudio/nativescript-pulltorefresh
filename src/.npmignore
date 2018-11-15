@@ -3,6 +3,7 @@
 .vscode/
 *.sln
 demo/
+node_modules/
 screens/
 *.gitattributes
 *.ts
