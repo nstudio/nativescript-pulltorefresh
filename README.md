@@ -4,7 +4,6 @@
 [![GitHub forks](https://img.shields.io/github/forks/bradmartin/nativescript-pulltorefresh.svg)](https://github.com/bradmartin/nativescript-pulltorefresh/network)
 [![PayPal Donate](https://img.shields.io/badge/Donate-PayPal-ff4081.svg)](https://www.paypal.me/bradwayne88)
 
-
 # NativeScript-PullToRefresh :recycle:
 
 NativeScript plugin to use Pull to Refresh on any view.
@@ -95,36 +94,39 @@ refreshList(args) {
 ```javascript
 import Vue from 'nativescript-vue';
 
-Vue.registerElement('PullToRefresh', () => require('nativescript-pulltorefresh').PullToRefresh);
+Vue.registerElement(
+  'PullToRefresh',
+  () => require('nativescript-pulltorefresh').PullToRefresh
+);
 ```
 
 #### Component
 
 ```vue
 <template>
-    <Page>
-        <PullToRefresh @refresh="refreshList">
-          <ListView for="item in listOfItems" @itemTap="onItemTap">
-            <v-template>
-              <!-- Shows the list item label in the default color and style. -->
-              <Label :text="item.text" />
-            </v-template>
-          </ListView>
-        </PullToRefresh>
-    </Page>
+  <Page>
+    <PullToRefresh @refresh="refreshList">
+      <ListView for="item in listOfItems" @itemTap="onItemTap">
+        <v-template>
+          <!-- Shows the list item label in the default color and style. -->
+          <label :text="item.text" />
+        </v-template>
+      </ListView>
+    </PullToRefresh>
+  </Page>
 </template>
 
 <script>
 export default {
-    methods: {
-        refreshList(args) {
-            var pullRefresh = args.object;
-            setTimeout(function () {
-                pullRefresh.refreshing = false;
-            }, 1000);
-        }
+  methods: {
+    refreshList(args) {
+      var pullRefresh = args.object;
+      setTimeout(function() {
+        pullRefresh.refreshing = false;
+      }, 1000);
     }
-}
+  }
+};
 </script>
 ```
 
@@ -153,6 +155,8 @@ if (uglify) {
 
 ## Properties
 
-* **refresh : function** _required_
-* **refreshing: boolean** - Notifies the widget that the refresh state has
+- **refresh : function** _required_
+- **refreshing: boolean** - Notifies the widget that the refresh state has
   changed.
+
+## [Changelog](./CHANGELOG.md)
