@@ -1,14 +1,15 @@
-/// <reference path="./node_modules/tns-platform-declarations/ios/ios.d.ts" />
+/// <reference path="./node_modules/tns-platform-declarations/ios.d.ts" />
+/// <reference path="./node_modules/nativescript-ui-listview/platforms/ios/typings/listview.d.ts" />
 
-import { Color } from "tns-core-modules/color";
+import { Color } from 'tns-core-modules/color';
 import {
   PullToRefreshBase,
   backgroundColorProperty,
   colorProperty,
   refreshingProperty
-} from "./pulltorefresh-common";
+} from './pulltorefresh-common';
 
-export * from "./pulltorefresh-common";
+export * from './pulltorefresh-common';
 
 class PullToRefreshHandler extends NSObject {
   public static ObjCExposedMethods = {
@@ -48,7 +49,7 @@ export class PullToRefresh extends PullToRefreshBase {
     this._handler = PullToRefreshHandler.initWithOnwer(new WeakRef(this));
     this.refreshControl.addTargetActionForControlEvents(
       this._handler,
-      "handleRefresh",
+      'handleRefresh',
       UIControlEvents.ValueChanged
     );
   }
@@ -77,7 +78,7 @@ export class PullToRefresh extends PullToRefreshBase {
       this.content.ios.scrollView.addSubview(this.refreshControl);
     } else {
       throw new Error(
-        "Content must inherit from either UIScrollView, UIWebView or WKWebView!"
+        'Content must inherit from either UIScrollView, UIWebView or WKWebView!'
       );
     }
   }

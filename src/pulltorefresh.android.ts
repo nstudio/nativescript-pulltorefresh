@@ -1,14 +1,14 @@
-/// <reference path="./node_modules/tns-platform-declarations/android/android.d.ts" />
+/// <reference path="./node_modules/tns-platform-declarations/android.d.ts" />
 
-import { Color } from "tns-core-modules/color";
+import { Color } from 'tns-core-modules/color';
 import {
   PullToRefreshBase,
   backgroundColorProperty,
   colorProperty,
   refreshingProperty
-} from "./pulltorefresh-common";
+} from './pulltorefresh-common';
 
-export * from "./pulltorefresh-common";
+export * from './pulltorefresh-common';
 
 export class PullToRefresh extends PullToRefreshBase {
   private _androidViewId: number;
@@ -70,7 +70,6 @@ export class PullToRefresh extends PullToRefreshBase {
 @Interfaces([
   (android.support.v4.widget as any).SwipeRefreshLayout.OnRefreshListener
 ])
-// tslint:disable-next-line:class-name
 class TNS_SwipeRefreshListener extends java.lang.Object {
   constructor(private owner: WeakRef<PullToRefresh>) {
     super();

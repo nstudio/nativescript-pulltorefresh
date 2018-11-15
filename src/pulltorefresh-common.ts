@@ -1,12 +1,12 @@
-import { ContentView } from "tns-core-modules/ui/content-view";
-import { Property, View } from "tns-core-modules/ui/core/view";
-import { PullToRefresh as PullToRefreshDefinition } from ".";
+import { ContentView } from 'tns-core-modules/ui/content-view';
+import { Property, View } from 'tns-core-modules/ui/core/view';
+import { PullToRefresh as PullToRefreshDefinition } from '.';
 
-export * from "tns-core-modules/ui/content-view";
+export * from 'tns-core-modules/ui/content-view';
 
 export class PullToRefreshBase extends ContentView
   implements PullToRefreshDefinition {
-  public static refreshEvent = "refresh";
+  public static refreshEvent = 'refresh';
 
   public refreshing: boolean;
 
@@ -26,7 +26,7 @@ export class PullToRefreshBase extends ContentView
 }
 
 export const refreshingProperty = new Property<PullToRefreshBase, boolean>({
-  name: "refreshing",
+  name: 'refreshing',
   defaultValue: false
 });
 refreshingProperty.register(PullToRefreshBase);
