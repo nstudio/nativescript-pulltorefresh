@@ -1,79 +1,80 @@
-android:
-  components:
-    - tools
-    - platform-tools
-    - build-tools-26.0.1
-    - android-23
-    - android-26
-    - extra-android-m2repository
-    - sys-img-armeabi-v7a-android-21
-
-before_cache:
-    - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock 
-
-cache:
-    directories:
-        - .nvm
-        - $HOME/.gradle/caches/
-        - $HOME/.gradle/wrapper/
-
-install:
-    - echo no | npm install -g nativescript
-    - tns usage-reporting disable
-    - tns error-reporting disable
-    - npm install
-    - cd src
-    - npm run setup
-
-script:
-
-
 matrix:
   include:
     - stage: "Lint"
       language: node_js
       os: linux
       node_js: "6"
-      script: "npm run ci.tslint" 
-    - stage: "WebPack"
+      script: cd src && npm run ci.tslint && cd ../demo && npm run ci.tslint
+    - stage: "WebPack, Build and Test"
       os: osx
       env:
-        - Webpack="iOS"
-      osx_image: xcode9.1
-      language: node_js 
+        - WebPack="iOS"
+      osx_image: xcode9.2
+      language: node_js
       node_js: "6"
       jdk: oraclejdk8
       before_install:
         - gem install cocoapods
         - pod repo update
-      script: cd ../demo && npm run build-ios-bundle --uglify
+      script: cd demo && npm run build.plugin && npm i && tns build ios --bundle --env.uglify
     - language: android
       os: linux
       env:
-        - Webpack="Android"
+        - WebPack="Android"
       jdk: oraclejdk8
       before_install: nvm install 6.10.3
-      script: cd ../demo &&  npm run build-android-bundle --uglify
-    - stage: "Build"
-      env: 
+      script: cd demo && npm run build.plugin && npm i && tns build android --bundle --env.uglify --env.snapshot
+    - language: android
+      env:
         - BuildAndroid="26"
-      language: android
       os: linux
       jdk: oraclejdk8
-      before_install: nvm install 6.10.3
+      before_install: nvm install stable
       script:
-        - cd ../demo && tns build android
+        - cd src && npm run build && cd ../demo && tns build android
     - os: osx
-      env: 
+      env:
         - BuildiOS="11"
-        - Xcode="9.1"
-      osx_image: xcode9.1
-      language: node_js 
+        - Xcode="9.2"
+      osx_image: xcode9.2
+      language: node_js
       node_js: "6"
       jdk: oraclejdk8
       before_install:
         - gem install cocoapods
         - pod repo update
       script:
-        - cd ../demo && tns build ios
-    
+        - cd src && npm run build && cd ../demo && tns build ios
+    - os: linux
+      language: android
+      dist: precise
+      sudo: required
+      jdk: oraclejdk8
+      before_script:
+        - echo no | android create avd --force -n test -t android-21 -b armeabi-v7a
+        - emulator -avd test -no-audio -no-window &
+        - android-wait-for-emulator
+      before_install:
+        - nvm install 6
+      script: cd src && npm run test.android
+    - os: osx
+      language: node_js
+      node_js: "6"
+      jdk: oraclejdk8
+      osx_image: xcode9.2
+      script: cd src && npm run test.ios
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-26.0.1
+    - android-26
+    - android-23
+    - extra-android-m2repository
+    - sys-img-armeabi-v7a-android-21
+
+install:
+    - echo no | npm install -g nativescript
+    - tns usage-reporting disable
+    - tns error-reporting disable
