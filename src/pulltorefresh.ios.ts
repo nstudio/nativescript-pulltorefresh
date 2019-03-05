@@ -67,7 +67,7 @@ export class PullToRefresh extends PullToRefreshBase {
       this.content.ios.scrollView.alwaysBounceVertical = true;
 
       this.content.ios.scrollView.addSubview(this.refreshControl);
-    } else if (this.content.ios instanceof TKListView) {
+    } else if (typeof TKListView != "undefined" && this.content.ios instanceof TKListView) {
       // ensure that we can trigger the refresh, even if the content is not large enough
       this.content.ios.collectionView.alwaysBounceVertical = true;
       this.content.ios.collectionView.addSubview(this.refreshControl);
