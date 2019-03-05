@@ -1,6 +1,6 @@
 {
   "name": "nativescript-pulltorefresh",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "A NativeScript plugin to provide the Pull to Refresh control on any view.",
   "main": "pulltorefresh",
   "typings": "index.d.ts",
@@ -17,23 +17,17 @@
     }
   },
   "scripts": {
-    "precommit": "lint-staged",
     "tsc": "tsc -skipLibCheck",
-    "build": "npm i && tsc --skipLibCheck",
-    "demo.ios": "npm run preparedemo && cd ../demo && tns run ios --emulator",
-    "demo.ios.device": "npm run preparedemo && cd ../demo && tns platform remove ios && tns run ios",
-    "demo.android": "npm run preparedemo && cd ../demo && tns platform remove android && tns run android --justlaunch",
-    "test": "npm run tslint && npm run tslint.demo && cd ../demo && tns build ios && tns build android",
-    "test.ios": "cd ../demo && tns platform remove ios && tns test ios --emulator",
-    "test.ios.device": "cd ../demo && tns platform remove ios && tns test ios",
-    "test.android": "cd ../demo && tns platform remove android && tns test android --justlaunch",
-    "preparedemo": "npm run build && cd ../demo && tns plugin remove nativescript-pulltorefresh && tns plugin add ../src && tns install",
-    "setup": "npm run build && cd ../demo && npm i",
-    "setupandinstall": "npm i && cd ../demo && npm i && cd ../src && npm run build && cd ../demo && tns plugin add ../src && cd ../src",
-    "tslint": "tslint --config '../tslint.json' '*.ts' --exclude '**/node_modules/**'",
-    "tslint.demo": "tslint --config '../tslint.json' '../demo/app/*.ts' --exclude '**/node_modules/**'",
-    "ci.tslint": "npm run tslint && npm run tslint.demo",
-    "prepublishOnly": "npm run build",
+    "build": "npm i && tsc",
+    "test.android": "npm i && npm run tsc && npm run tslint && cd ../demo && tns build android && tns test android --justlaunch",
+    "test.ios": "npm i && npm run tsc && npm run tslint && cd ../demo && tns build ios && tns test ios --justlaunch",
+    "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\" --exclude \"*demo*/platforms/**\"",
+    "plugin.link": "npm link && cd ../demo && npm link nativescript-geolocation && cd ../src",
+    "plugin.tscwatch": "npm run tsc -- -w",
+    "demo.ios": "npm i && npm run tsc && cd ../demo && tns run ios --syncAllFiles",
+    "demo.android": "npm i && npm run tsc && cd ../demo && tns run android --syncAllFiles",
+    "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'",
+    "precommit": "lint-staged",
     "development.setup": "npm run setup && npm link && cd ../demo && npm link nativescript-pulltorefresh && cd ../src",
     "generate.typings.ios": "cd ../demo && TNS_DEBUG_METADATA_PATH=\"$(pwd)/metadata\" tns build ios && TNS_TYPESCRIPT_DECLARATIONS_PATH=\"$(pwd)/typings\" tns build ios && echo 'Now look for your library typings in demo/typings!'",
     "make-changelog": "cd ../ && github_changelog_generator -u bradmartin -p nativescript-pulltorefresh"
@@ -58,8 +52,7 @@
     "UIRefreshControl",
     "android",
     "ios",
-    "bradmartin",
-    "Thorum"
+    "bradmartin"
   ],
   "contributors": [
     {
@@ -108,14 +101,14 @@
     "tns-core-modules": "^3.0.0 || >=4.0.0 || >=4.1.0"
   },
   "devDependencies": {
-    "husky": "^1.1.4",
-    "lint-staged": "^8.0.4",
-    "nativescript-ui-listview": "^3.8.0",
-    "prettier": "^1.15.2",
-    "rimraf": "^2.5.0",
-    "tns-core-modules": "^5.0.2",
-    "tns-platform-declarations": "^5.0.2",
-    "tslint": "~5.11.0",
-    "typescript": "~2.8.2"
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "nativescript-ui-listview": "^5.2.0",
+    "prettier": "^1.16.4",
+    "rimraf": "^2.6.3",
+    "tns-core-modules": "^5.2.2",
+    "tns-platform-declarations": "^5.2.2",
+    "tslint": "~5.13.1",
+    "typescript": "~3.1.6"
   }
 }

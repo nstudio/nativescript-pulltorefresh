@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "lib": ["es6", "dom"],
     "sourceMap": true,
-    "pretty": true,
+    "pretty": false,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "noEmitHelpers": true,
