@@ -1,8 +1,18 @@
 # Change Log
 
-## [Unreleased](https://github.com/bradmartin/nativescript-pulltorefresh/tree/HEAD)
+## [2.2.1](https://github.com/bradmartin/nativescript-pulltorefresh/tree/2.2.1) (2019-03-05)
+[Full Changelog](https://github.com/bradmartin/nativescript-pulltorefresh/compare/2.2.0...2.2.1)
 
-[Full Changelog](https://github.com/bradmartin/nativescript-pulltorefresh/compare/2.1.0...HEAD)
+**Closed issues:**
+
+- Support for RadListView? [\#17](https://github.com/bradmartin/nativescript-pulltorefresh/issues/17)
+
+**Merged pull requests:**
+
+- Showstopper: TKListView is not a function [\#53](https://github.com/bradmartin/nativescript-pulltorefresh/pull/53) ([vbresults](https://github.com/vbresults))
+
+## [2.2.0](https://github.com/bradmartin/nativescript-pulltorefresh/tree/2.2.0) (2018-11-15)
+[Full Changelog](https://github.com/bradmartin/nativescript-pulltorefresh/compare/2.1.0...2.2.0)
 
 **Closed issues:**
 
