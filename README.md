@@ -133,7 +133,7 @@ export default {
 ### Webpack
 
 If you are using webpack with **uglify** for Android, you must add
-[TNS_wipeRefreshListener](./pulltorefresh.android.ts#L72) to the mangle exception
+[TNS_SwipeRefreshListener](./src/pulltorefresh.android.ts#L73) to the mangle exception
 list.
 
 #### webpack.config.js
