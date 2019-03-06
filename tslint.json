@@ -5,7 +5,6 @@
     "indent": [true, "spaces"],
     "no-duplicate-variable": true,
     "prefer-const": true,
-    "no-unused-variable": true,
     "no-eval": true,
     "no-internal-module": true,
     "no-trailing-whitespace": true,
