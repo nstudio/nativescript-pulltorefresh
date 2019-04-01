@@ -1,12 +1,35 @@
-<page xmlns="http://schemas.nativescript.org/tns.xsd" 
-    xmlns:PullRefresh="nativescript-pulltorefresh" loaded="pageLoaded">
+<page
+    xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:PullRefresh="nativescript-pulltorefresh"
+    xmlns:ns="nativescript-carousel"
+    loaded="pageLoaded">
     <action-bar title="Pull To Refresh :)" backgroundColor="#2196F3" color="#f1f1f1" />
     <stack-layout>
         <PullRefresh:PullToRefresh loaded="swipeLoaded" refresh="refreshList" backgroundColor="#fff000" color="#3489db">
-            <list-view items="{{ users }}" backgroundColor="white">
-                <list-view.itemTemplate>
-                    <label text="{{ name }}" row="0" col="1" textWrap="true" class="message" />
-                </list-view.itemTemplate>
+            <list-view items="{{ users }}" backgroundColor="white" itemTemplateSelector="$index === 0 ? 'carousel' : 'label'">
+                <list-view.itemTemplates>
+                    <template key="carousel">
+                        <GridLayout rows="200" columns="*">
+                            <ns:Carousel height="100%" width="100%" pageChanged="myChangeEvent" pageTapped="mySelectedEvent" indicatorColor="#fff000" finite="true" bounce="false" showIndicator="true" verticalAlignment="top" android:indicatorAnimation="swap" color="white">
+                                <ns:CarouselItem id="slide1" backgroundColor="#b3cde0" verticalAlignment="middle">
+                                    <Label text="Slide 1" backgroundColor="#50000000" horizontalAlignment="center"/>
+                                </ns:CarouselItem>
+                                <ns:CarouselItem id="slide2" backgroundColor="#6497b1" verticalAlignment="middle">
+                                    <Label text="Slide 2" backgroundColor="#50000000" horizontalAlignment="center"/>
+                                </ns:CarouselItem>
+                                <ns:CarouselItem id="slide3" backgroundColor="#005b96" verticalAlignment="middle">
+                                    <Label text="Slide 3" backgroundColor="#50000000" horizontalAlignment="center"/>
+                                </ns:CarouselItem>
+                                <ns:CarouselItem id="slide4" backgroundColor="#03396c" verticalAlignment="middle">
+                                    <Label text="Slide 4" backgroundColor="#50000000" horizontalAlignment="center"/>
+                                </ns:CarouselItem>
+                            </ns:Carousel>
+                        </GridLayout>
+                    </template>
+                    <template key="label">
+                        <label text="{{ name }}" row="0" col="1" textWrap="true" class="message" />
+                    </template>
+                </list-view.itemTemplates>
             </list-view>
         </PullRefresh:PullToRefresh>
     </stack-layout>
