@@ -10,14 +10,20 @@ import {
 
 export * from './pulltorefresh-common';
 
-class CarouselFriendlySwipeRefreshLayout extends android.support.v4.widget.SwipeRefreshLayout {
+class CarouselFriendlySwipeRefreshLayout extends android.support.v4.widget
+  .SwipeRefreshLayout {
   private _touchSlop: number;
   private _previousX: number;
 
-  public constructor(context: android.content.Context, attrs: android.util.AttributeSet) {
+  public constructor(
+    context: android.content.Context,
+    attrs: android.util.AttributeSet
+  ) {
     super(context, attrs);
 
-    this._touchSlop = android.view.ViewConfiguration.get(context).getScaledTouchSlop();
+    this._touchSlop = android.view.ViewConfiguration.get(
+      context
+    ).getScaledTouchSlop();
   }
 
   public onInterceptTouchEvent(event: android.view.MotionEvent): boolean {
@@ -52,7 +58,9 @@ export class PullToRefresh extends PullToRefreshBase {
   }
 
   public createNativeView() {
-    const swipeRefreshLayout = new (CarouselFriendlySwipeRefreshLayout as any)(this._context);
+    const swipeRefreshLayout = new (CarouselFriendlySwipeRefreshLayout as any)(
+      this._context
+    );
 
     if (!this._androidViewId) {
       this._androidViewId = android.view.View.generateViewId();
