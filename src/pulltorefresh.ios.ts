@@ -1,7 +1,7 @@
 /// <reference path="./node_modules/tns-platform-declarations/ios.d.ts" />
 /// <reference path="./node_modules/nativescript-ui-listview/platforms/ios/typings/listview.d.ts" />
 
-import { device } from 'tns-core-modules/platform';
+import { ios as iosUtils } from 'tns-core-modules/utils/utils';
 import { Color } from 'tns-core-modules/color';
 import {
   PullToRefreshBase,
@@ -37,7 +37,7 @@ class PullToRefreshHandler extends NSObject {
   }
 }
 
-const SUPPORT_REFRESH_CONTROL = parseFloat(device.osVersion) >= 10.0;
+const SUPPORT_REFRESH_CONTROL = iosUtils.MajorVersion >= 10;
 
 export class PullToRefresh extends PullToRefreshBase {
   private _handler: PullToRefreshHandler;
