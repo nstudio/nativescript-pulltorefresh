@@ -1,6 +1,7 @@
 /// <reference path="./node_modules/tns-platform-declarations/ios.d.ts" />
 /// <reference path="./node_modules/nativescript-ui-listview/platforms/ios/typings/listview.d.ts" />
 
+import { ios as iosUtils } from 'tns-core-modules/utils/utils';
 import { Color } from 'tns-core-modules/color';
 import {
   PullToRefreshBase,
@@ -36,6 +37,8 @@ class PullToRefreshHandler extends NSObject {
   }
 }
 
+const SUPPORT_REFRESH_CONTROL = iosUtils.MajorVersion >= 10;
+
 export class PullToRefresh extends PullToRefreshBase {
   private _handler: PullToRefreshHandler;
 
@@ -58,27 +61,44 @@ export class PullToRefresh extends PullToRefreshBase {
     super.onLoaded();
 
     if (this.content.ios instanceof UIScrollView) {
-      // ensure that we can trigger the refresh, even if the content is not large enough
-      this.content.ios.alwaysBounceVertical = true;
+      if (SUPPORT_REFRESH_CONTROL) {
+        this.content.ios.refreshControl = this.refreshControl;
+      } else {
+        // ensure that we can trigger the refresh, even if the content is not large enough
+        this.content.ios.alwaysBounceVertical = true;
 
-      this.content.ios.addSubview(this.refreshControl);
+        this.content.ios.addSubview(this.refreshControl);
+      }
     } else if (this.content.ios instanceof UIWebView) {
-      // ensure that we can trigger the refresh, even if the content is not large enough
-      this.content.ios.scrollView.alwaysBounceVertical = true;
+      if (SUPPORT_REFRESH_CONTROL) {
+        this.content.ios.scrollView.refreshControl = this.refreshControl;
+      } else {
+        // ensure that we can trigger the refresh, even if the content is not large enough
+        this.content.ios.scrollView.alwaysBounceVertical = true;
 
-      this.content.ios.scrollView.addSubview(this.refreshControl);
+        this.content.ios.scrollView.addSubview(this.refreshControl);
+      }
     } else if (
       typeof TKListView !== 'undefined' &&
       this.content.ios instanceof TKListView
     ) {
-      // ensure that we can trigger the refresh, even if the content is not large enough
-      this.content.ios.collectionView.alwaysBounceVertical = true;
-      this.content.ios.collectionView.addSubview(this.refreshControl);
-    } else if (this.content.ios instanceof WKWebView) {
-      // ensure that we can trigger the refresh, even if the content is not large enough
-      this.content.ios.scrollView.alwaysBounceVertical = true;
+      if (SUPPORT_REFRESH_CONTROL) {
+        this.content.ios.collectionView.refreshControl = this.refreshControl;
+      } else {
+        // ensure that we can trigger the refresh, even if the content is not large enough
+        this.content.ios.collectionView.alwaysBounceVertical = true;
 
-      this.content.ios.scrollView.addSubview(this.refreshControl);
+        this.content.ios.collectionView.addSubview(this.refreshControl);
+      }
+    } else if (this.content.ios instanceof WKWebView) {
+      if (SUPPORT_REFRESH_CONTROL) {
+        this.content.ios.scrollView.refreshControl = this.refreshControl;
+      } else {
+        // ensure that we can trigger the refresh, even if the content is not large enough
+        this.content.ios.scrollView.alwaysBounceVertical = true;
+
+        this.content.ios.scrollView.addSubview(this.refreshControl);
+      }
     } else {
       throw new Error(
         'Content must inherit from either UIScrollView, UIWebView or WKWebView!'
