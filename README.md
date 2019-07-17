@@ -154,12 +154,6 @@ export default {
 </script>
 ```
 
-### Webpack
-
-If you are using webpack with **uglify** for Android, you must add
-[TNS_SwipeRefreshListener](./src/pulltorefresh.android.ts#L73) to the mangle exception
-list.
-
 ## Properties
 
 - **refresh : function** _required_
