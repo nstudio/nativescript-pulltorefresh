@@ -32,7 +32,7 @@ NativeScript plugin to use Pull to Refresh on any view.
 
 ## Installation
 
-`tns plugin add nativescript-pulltorefresh`
+`tns plugin add @nstudio/nativescript-pulltorefresh`
 
 #### [Android - _SwipeRefreshLayout_](http://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html)
 
@@ -159,23 +159,6 @@ export default {
 If you are using webpack with **uglify** for Android, you must add
 [TNS_SwipeRefreshListener](./src/pulltorefresh.android.ts#L73) to the mangle exception
 list.
-
-#### webpack.config.js
-
-```JS
-if (uglify) {
-    config.plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
-
-    // Work around an Android issue by setting compress = false
-    const compress = platform !== "android";
-    config.plugins.push(new UglifyJsPlugin({
-        uglifyOptions: {
-            mangle: { reserved: [ ...nsWebpack.uglifyMangleExcludes, "TNS_SwipeRefreshListener" ] },
-            compress,
-        }
-    }));
-}
-```
 
 ## Properties
 
