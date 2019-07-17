@@ -1,12 +1,9 @@
-/// <reference path="./node_modules/tns-platform-declarations/ios.d.ts" />
-/// <reference path="./node_modules/nativescript-ui-listview/platforms/ios/typings/listview.d.ts" />
-
-import { ios as iosUtils } from 'tns-core-modules/utils/utils';
 import { Color } from 'tns-core-modules/color';
+import { ios as iosUtils } from 'tns-core-modules/utils/utils';
 import {
-  PullToRefreshBase,
   backgroundColorProperty,
   colorProperty,
+  PullToRefreshBase,
   refreshingProperty
 } from './pulltorefresh-common';
 

@@ -1,17 +1,28 @@
-/// <reference path="./node_modules/tns-platform-declarations/android.d.ts" />
-
 import { Color } from 'tns-core-modules/color';
 import {
-  PullToRefreshBase,
   backgroundColorProperty,
   colorProperty,
+  PullToRefreshBase,
   refreshingProperty
 } from './pulltorefresh-common';
 
 export * from './pulltorefresh-common';
 
-class CarouselFriendlySwipeRefreshLayout extends android.support.v4.widget
-  .SwipeRefreshLayout {
+declare const global: any;
+
+const SwipeRefreshLayout_Namespace = useAndroidX()
+  ? androidx.swiperefreshlayout.widget
+  : (android.support.v4 as any).widget;
+
+const OnRefreshListener = useAndroidX()
+  ? androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
+  : (android.support.v4 as any).widget.SwipeRefreshLayout.OnRefreshListener;
+
+function useAndroidX() {
+  return global.androidx && androidx.swiperefreshlayout;
+}
+
+class CarouselFriendlySwipeRefreshLayout extends SwipeRefreshLayout_Namespace.SwipeRefreshLayout {
   private _touchSlop: number;
   private _previousX: number;
 
@@ -51,10 +62,10 @@ class CarouselFriendlySwipeRefreshLayout extends android.support.v4.widget
 export class PullToRefresh extends PullToRefreshBase {
   private _androidViewId: number;
 
-  public nativeView: any; // android.support.v4.widget.SwipeRefreshLayout;
+  public nativeView: androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-  get android(): any {
-    return this.nativeView; // android.support.v4.widget.SwipeRefreshLayout
+  get android(): androidx.swiperefreshlayout.widget.SwipeRefreshLayout {
+    return this.nativeView;
   }
 
   public createNativeView() {
@@ -68,6 +79,7 @@ export class PullToRefresh extends PullToRefreshBase {
     swipeRefreshLayout.setId(this._androidViewId);
 
     const refreshListener = new TNS_SwipeRefreshListener(new WeakRef(this));
+    console.log('refreshListener', refreshListener);
     swipeRefreshLayout.setOnRefreshListener(refreshListener);
     (swipeRefreshLayout as any).refreshListener = refreshListener;
 
@@ -107,7 +119,7 @@ export class PullToRefresh extends PullToRefreshBase {
 }
 
 @Interfaces([
-  (android.support.v4.widget as any).SwipeRefreshLayout.OnRefreshListener
+  androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 ])
 class TNS_SwipeRefreshListener extends java.lang.Object {
   constructor(private owner: WeakRef<PullToRefresh>) {

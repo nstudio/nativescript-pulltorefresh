@@ -7,6 +7,9 @@ node_modules/
 screens/
 *.gitattributes
 *.ts
-!*.d.ts
+references.d.ts
 tsconfig.json
 *.map
+
+## Dont IGNORE
+!index.d.ts

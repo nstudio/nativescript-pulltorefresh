@@ -1,12 +1,38 @@
-[![npm](https://img.shields.io/npm/v/nativescript-pulltorefresh.svg)](https://www.npmjs.com/package/nativescript-pulltorefresh)
-[![npm](https://img.shields.io/npm/dt/nativescript-pulltorefresh.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-pulltorefresh)
-[![Build Status](https://travis-ci.org/bradmartin/nativescript-pulltorefresh.svg?branch=master)](https://travis-ci.org/bradmartin/nativescript-pulltorefresh)
-[![GitHub stars](https://img.shields.io/github/stars/bradmartin/nativescript-pulltorefresh.svg)](https://github.com/bradmartin/nativescript-pulltorefresh/stargazers)
-[![PayPal Donate](https://img.shields.io/badge/Donate-PayPal-ff4081.svg)](https://www.paypal.me/bradwayne88)
-
-# NativeScript-PullToRefresh :recycle:
-
+<a align="center" href="https://www.npmjs.com/package/@nstudio/nativescript-pulltorefresh">
+    <h2 align="center">NativeScript-PullToRefresh</h2>
+</a>
+<h4 align="center">
 NativeScript plugin to use Pull to Refresh on any view.
+</h4>
+
+<p align="center">
+    <a href="https://www.npmjs.com/package/@nstudio/nativescript-pulltorefresh">
+        <img src="https://img.shields.io/npm/v/@nstudio/nativescript-pulltorefresh.svg" alt="npm">
+    </a>
+    <a href="https://www.npmjs.com/package/@nstudio/nativescript-pulltorefresh">
+        <img src="https://img.shields.io/npm/dt/@nstudio/nativescript-pulltorefresh.svg?label=npm%20downloads" alt="npm">
+    </a>
+    <a href="https://github.com/nstudio/nativescript-pulltorefresh/stargazers">
+        <img src="https://img.shields.io/github/stars/nstudio/nativescript-pulltorefresh.svg" alt="stars">
+    </a>
+     <a href="https://github.com/nstudio/nativescript-pulltorefresh/network">
+        <img src="https://img.shields.io/github/forks/nstudio/nativescript-pulltorefresh.svg" alt="forks">
+    </a>
+    <a href="https://github.com/nstudio/nativescript-pulltorefresh/blob/master/LICENSE">
+        <img src="https://img.shields.io/github/license/nstudio/nativescript-pulltorefresh.svg" alt="license">
+    </a>
+    <a href="https://nstudio.io">
+      <img src="https://github.com/nstudio/media/blob/master/images/nstudio-banner.png?raw=true" alt="nStudio banner">
+    </a>
+    <h5 align="center">Do you need assistance on your project or plugin? Contact the nStudio team anytime at <a href="mailto:team@nstudio.io">team@nstudio.io</a> to get up to speed with the best practices in mobile and web app development.
+    </h5>
+</p>
+
+---
+
+## Installation
+
+`tns plugin add nativescript-pulltorefresh`
 
 #### [Android - _SwipeRefreshLayout_](http://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html)
 
@@ -18,19 +44,15 @@ NativeScript plugin to use Pull to Refresh on any view.
 | ---------------------------------------------- | -------------------------------------- |
 | ![Android Sample](screens/android_refresh.gif) | ![iOS Sample](screens/ios_refresh.gif) |
 
-## Installation
-
-`tns plugin add nativescript-pulltorefresh`
-
 ## Usage
 
-### Vanilla NativeScript
+### NativeScript Core
 
 #### XML
 
-```XML
+```xml
 <page xmlns="http://schemas.nativescript.org/tns.xsd"
-      xmlns:PullRefresh="nativescript-pulltorefresh"
+      xmlns:PullRefresh="@nstudio/nativescript-pulltorefresh"
       loaded="pageLoaded">
     <PullRefresh:PullToRefresh refresh="refreshList">
         <list-view items="{{ users }}">
@@ -44,33 +66,35 @@ NativeScript plugin to use Pull to Refresh on any view.
 
 #### JS
 
-```JS
+```javascript
 function refreshList(args) {
+  // Get reference to the PullToRefresh component;
+  var pullRefresh = args.object;
 
-    // Get reference to the PullToRefresh component;
-    var pullRefresh = args.object;
-
-    // Do work here... and when done call set refreshing property to false to stop the refreshing
-    loadItems().then((resp) => {
-        // ONLY USING A TIMEOUT TO SIMULATE/SHOW OFF THE REFRESHING
-        setTimeout(() => {
-            pullRefresh.refreshing = false;
-        }, 1000);
-    }, (err) => {
+  // Do work here... and when done call set refreshing property to false to stop the refreshing
+  loadItems().then(
+    resp => {
+      // ONLY USING A TIMEOUT TO SIMULATE/SHOW OFF THE REFRESHING
+      setTimeout(() => {
         pullRefresh.refreshing = false;
-    });
+      }, 1000);
+    },
+    err => {
+      pullRefresh.refreshing = false;
+    }
+  );
 }
 exports.refreshList = refreshList;
 ```
 
 ### Angular NativeScript
 
-```TS
+```typescript
 import { registerElement } from "nativescript-angular/element-registry";
-registerElement("PullToRefresh", () => require("nativescript-pulltorefresh").PullToRefresh);
+registerElement("PullToRefresh", () => require("@nstudio/nativescript-pulltorefresh").PullToRefresh);
 
 refreshList(args) {
-         var pullRefresh = args.object;
+         const pullRefresh = args.object;
          setTimeout(function () {
             pullRefresh.refreshing = false;
          }, 1000);
@@ -79,13 +103,13 @@ refreshList(args) {
 
 #### HTML
 
-```HTML
+```html
 <PullToRefresh (refresh)="refreshList($event)">
-    <ListView [items]="itemList" >
-        <template let-item="item">
-            <Label [text]="item.id"></Label>
-        </template>
-    </ListView>
+  <ListView [items]="itemList">
+    <template let-item="item">
+      <label [text]="item.id"></label>
+    </template>
+  </ListView>
 </PullToRefresh>
 ```
 
@@ -96,7 +120,7 @@ import Vue from 'nativescript-vue';
 
 Vue.registerElement(
   'PullToRefresh',
-  () => require('nativescript-pulltorefresh').PullToRefresh
+  () => require('@nstudio/nativescript-pulltorefresh').PullToRefresh
 );
 ```
 
@@ -160,3 +184,5 @@ if (uglify) {
   changed.
 
 ## [Changelog](./CHANGELOG.md)
+
+## [Contributing](./CONTRIBUTING.md)
