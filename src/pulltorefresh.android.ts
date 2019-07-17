@@ -14,10 +14,6 @@ const SwipeRefreshLayout_Namespace = useAndroidX()
   ? androidx.swiperefreshlayout.widget
   : (android.support.v4 as any).widget;
 
-const OnRefreshListener = useAndroidX()
-  ? androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
-  : (android.support.v4 as any).widget.SwipeRefreshLayout.OnRefreshListener;
-
 function useAndroidX() {
   return global.androidx && androidx.swiperefreshlayout;
 }
@@ -78,10 +74,43 @@ export class PullToRefresh extends PullToRefreshBase {
     }
     swipeRefreshLayout.setId(this._androidViewId);
 
-    const refreshListener = new TNS_SwipeRefreshListener(new WeakRef(this));
-    console.log('refreshListener', refreshListener);
-    swipeRefreshLayout.setOnRefreshListener(refreshListener);
-    (swipeRefreshLayout as any).refreshListener = refreshListener;
+    // check if we're using android X to use the correct interfaced extended class below
+    if (useAndroidX()) {
+      const androidXListener = new androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener(
+        {
+          onRefresh() {
+            const owner = this.owner.get();
+
+            if (owner) {
+              owner.refreshing = true;
+              owner.notify({
+                eventName: PullToRefreshBase.refreshEvent,
+                object: owner
+              });
+            }
+          }
+        }
+      );
+      swipeRefreshLayout.setOnRefreshListener(androidXListener);
+      (swipeRefreshLayout as any).refreshListener = androidXListener;
+    } else {
+      const supportListener = new (android.support
+        .v4 as any).widget.SwipeRefreshLayout.OnRefreshListener({
+        onRefresh(v) {
+          const owner = this.owner.get();
+
+          if (owner) {
+            owner.refreshing = true;
+            owner.notify({
+              eventName: PullToRefreshBase.refreshEvent,
+              object: owner
+            });
+          }
+        }
+      });
+      swipeRefreshLayout.setOnRefreshListener(supportListener);
+      (swipeRefreshLayout as any).refreshListener = supportListener;
+    }
 
     return swipeRefreshLayout;
   }
@@ -115,28 +144,5 @@ export class PullToRefresh extends PullToRefreshBase {
   [backgroundColorProperty.setNative](value: Color | number) {
     const color = value instanceof Color ? value.android : value;
     this.nativeView.setProgressBackgroundColorSchemeColor(color);
-  }
-}
-
-@Interfaces([
-  androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
-])
-class TNS_SwipeRefreshListener extends java.lang.Object {
-  constructor(private owner: WeakRef<PullToRefresh>) {
-    super();
-
-    return global.__native(this);
-  }
-
-  public onRefresh(v) {
-    const owner = this.owner.get();
-
-    if (owner) {
-      owner.refreshing = true;
-      owner.notify({
-        eventName: PullToRefreshBase.refreshEvent,
-        object: owner
-      });
-    }
   }
 }
