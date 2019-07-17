@@ -25,6 +25,7 @@
     "setup": "npm i && tsc && cd ../demo && npm i && tsc",
     "demo.ios": "cd ../demo && tns run ios",
     "demo.android": "cd ../demo && tns run android",
+    "publish": "cd ../publish && ./publish.sh",
     "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'",
     "development.setup": "npm run setup && npm link && cd ../demo && npm link nativescript-pulltorefresh && cd ../src",
     "generate.typings.ios": "cd ../demo && TNS_DEBUG_METADATA_PATH=\"$(pwd)/metadata\" tns build ios && TNS_TYPESCRIPT_DECLARATIONS_PATH=\"$(pwd)/typings\" tns build ios && echo 'Now look for your library typings in demo/typings!'",
