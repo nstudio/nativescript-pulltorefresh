@@ -66,7 +66,7 @@ export class PullToRefresh extends PullToRefreshBase {
 
         this.content.ios.addSubview(this.refreshControl);
       }
-    } else if (this.content.ios instanceof UIWebView) {
+    } else if (this.content.ios instanceof WKWebView) {
       if (SUPPORT_REFRESH_CONTROL) {
         this.content.ios.scrollView.refreshControl = this.refreshControl;
       } else {
@@ -98,7 +98,7 @@ export class PullToRefresh extends PullToRefreshBase {
       }
     } else {
       throw new Error(
-        'Content must inherit from either UIScrollView, UIWebView or WKWebView!'
+        'Content must inherit from either UIScrollView or WKWebView!'
       );
     }
   }

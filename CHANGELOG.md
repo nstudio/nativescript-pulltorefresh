@@ -39,7 +39,7 @@
 
 **Closed issues:**
 
-- JS ERROR Error: Content must inherit from either UIScrollView, UIWebView or WKWebView! [\#46](https://github.com/nstudio/nativescript-pulltorefresh/issues/46)
+- JS ERROR Error: Content must inherit from either UIScrollView or WKWebView! [\#46](https://github.com/nstudio/nativescript-pulltorefresh/issues/46)
 - nativescript-vue [\#42](https://github.com/nstudio/nativescript-pulltorefresh/issues/42)
 - How to register element properly? [\#41](https://github.com/nstudio/nativescript-pulltorefresh/issues/41)
 
@@ -94,7 +94,7 @@
 
 - Cannot scroll ListView up [\#19](https://github.com/nstudio/nativescript-pulltorefresh/issues/19)
 - Not working in TNS 2.5 [\#18](https://github.com/nstudio/nativescript-pulltorefresh/issues/18)
-- Support UIWebView on ios [\#15](https://github.com/nstudio/nativescript-pulltorefresh/issues/15)
+- Support  on ios [\#15](https://github.com/nstudio/nativescript-pulltorefresh/issues/15)
 - Question: Using in NS angular project [\#14](https://github.com/nstudio/nativescript-pulltorefresh/issues/14)
 - Typescript Error While Registering PullToRefresh In NG2 App [\#13](https://github.com/nstudio/nativescript-pulltorefresh/issues/13)
 - Angular2 version of pulltorefresh [\#11](https://github.com/nstudio/nativescript-pulltorefresh/issues/11)
@@ -103,7 +103,7 @@
 
 - Update iOS app resources [\#21](https://github.com/nstudio/nativescript-pulltorefresh/pull/21) ([dtopuzov](https://github.com/dtopuzov))
 - Updated README.md for Nativescript Angular 2 Usage [\#20](https://github.com/nstudio/nativescript-pulltorefresh/pull/20) ([dlucidone](https://github.com/dlucidone))
-- Extend code to support UIWebView \#15 [\#16](https://github.com/nstudio/nativescript-pulltorefresh/pull/16) ([ahalls](https://github.com/ahalls))
+- Extend code to support  \#15 [\#16](https://github.com/nstudio/nativescript-pulltorefresh/pull/16) ([ahalls](https://github.com/ahalls))
 
 ## [1.1.8](https://github.com/nstudio/nativescript-pulltorefresh/tree/1.1.8) (2016-09-08)
 **Closed issues:**
