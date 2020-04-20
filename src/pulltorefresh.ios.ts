@@ -119,7 +119,11 @@ export class PullToRefresh extends PullToRefreshBase {
   }
   [colorProperty.setNative](value: Color | UIColor) {
     const color = value instanceof Color ? value.ios : value;
-
+    // Default content color (required for text)
+    if (this.content && !this.content.style.color)
+    {
+      this.content.style.color = color;
+    }
     this.refreshControl.tintColor = color;
   }
 
