@@ -138,6 +138,11 @@ export class PullToRefresh extends PullToRefreshBase {
 
   [colorProperty.setNative](value: Color | number) {
     const color = value instanceof Color ? value.android : value;
+    // Default content color (required for text)
+    if (this.content && !this.content.style.color)
+    {
+      this.content.style.color = color;
+    }
     this.nativeView.setColorSchemeColors([color]);
   }
 
