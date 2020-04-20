@@ -1,4 +1,3 @@
-import { Color } from 'tns-core-modules/color';
 import * as common from './pulltorefresh-common';
 
 export * from './pulltorefresh-common';
@@ -131,14 +130,14 @@ export class PullToRefresh extends common.PullToRefreshBase {
     this.nativeView.setRefreshing(value);
   }
 
-  [common.indicatorColorProperty.setNative](value: Color) {
+  [common.indicatorColorProperty.setNative](value: any) {
     const color = value ? value.android : this.color;
     this.nativeView.setColorSchemeColors([color]);
   }
 
-  [common.indicatorColorStyleProperty.setNative](value: Color) {
+  [common.indicatorColorStyleProperty.setNative](value: any) {
     // Inline property has priority
-    if (this.indicatorColor)
+    if ((this as any).indicatorColor)
     {
       return;
     }
@@ -146,14 +145,14 @@ export class PullToRefresh extends common.PullToRefreshBase {
     this.nativeView.setColorSchemeColors([color]);
   }
 
-  [common.indicatorFillColorProperty.setNative](value: Color) {
+  [common.indicatorFillColorProperty.setNative](value: any) {
     const color = value ? value.android : this.backgroundColor;
     this.nativeView.setProgressBackgroundColorSchemeColor(color);
   }
 
-  [common.indicatorFillColorStyleProperty.setNative](value: Color) {
+  [common.indicatorFillColorStyleProperty.setNative](value: any) {
     // Inline property has priority
-    if (this.indicatorFillColor)
+    if ((this as any).indicatorFillColor)
     {
       return;
     }
