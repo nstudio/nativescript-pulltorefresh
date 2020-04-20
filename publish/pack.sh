@@ -7,28 +7,28 @@ ROOT_DIR=..
 PUBLISH=--publish
 
 install() {
-    npm i
+    npm.cmd i
 }
 
 pack() {
 
     echo 'Clearing /src and /package...'
-    node_modules/.bin/rimraf "$TO_SOURCE_DIR"
-    node_modules/.bin/rimraf "$PACK_DIR"
+    node_modules/.bin/rimraf.cmd "$TO_SOURCE_DIR"
+    node_modules/.bin/rimraf.cmd "$PACK_DIR"
 
     # copy src
     echo 'Copying src...'
-    node_modules/.bin/ncp "$SOURCE_DIR" "$TO_SOURCE_DIR"
+    node_modules/.bin/ncp.cmd "$SOURCE_DIR" "$TO_SOURCE_DIR"
 
     # copy README & LICENSE to src
     echo 'Copying README and LICENSE to /src...'
-    node_modules/.bin/ncp "$ROOT_DIR"/LICENSE.md "$TO_SOURCE_DIR"/LICENSE.md
-    node_modules/.bin/ncp "$ROOT_DIR"/README.md "$TO_SOURCE_DIR"/README.md
+    node_modules/.bin/ncp.cmd "$ROOT_DIR"/LICENSE.md "$TO_SOURCE_DIR"/LICENSE.md
+    node_modules/.bin/ncp.cmd "$ROOT_DIR"/README.md "$TO_SOURCE_DIR"/README.md
 
     # compile package and copy files required by npm
     echo 'Building /src...'
     cd "$TO_SOURCE_DIR"
-    node_modules/.bin/tsc
+    node_modules/.bin/tsc.cmd
     cd ..
 
     echo 'Creating package...'
@@ -37,11 +37,11 @@ pack() {
 
     # create the package
     cd "$PACK_DIR"
-    npm pack ../"$TO_SOURCE_DIR"
+    npm.cmd pack ../"$TO_SOURCE_DIR"
 
     # delete source directory used to create the package
     cd ..
-    node_modules/.bin/rimraf "$TO_SOURCE_DIR"
+    node_modules/.bin/rimraf.cmd "$TO_SOURCE_DIR"
 }
 
 install && pack

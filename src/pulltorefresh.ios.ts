@@ -1,11 +1,6 @@
 import { Color } from 'tns-core-modules/color';
 import { ios as iosUtils } from 'tns-core-modules/utils/utils';
-import {
-  backgroundColorProperty,
-  colorProperty,
-  PullToRefreshBase,
-  refreshingProperty
-} from './pulltorefresh-common';
+import * as common from './pulltorefresh-common';
 
 export * from './pulltorefresh-common';
 
@@ -28,7 +23,7 @@ class PullToRefreshHandler extends NSObject {
     const pullToRefresh = this._owner.get();
     pullToRefresh.refreshing = true;
     pullToRefresh.notify({
-      eventName: PullToRefreshBase.refreshEvent,
+      eventName: common.PullToRefreshBase.refreshEvent,
       object: pullToRefresh
     });
   }
@@ -36,7 +31,7 @@ class PullToRefreshHandler extends NSObject {
 
 const SUPPORT_REFRESH_CONTROL = iosUtils.MajorVersion >= 10;
 
-export class PullToRefresh extends PullToRefreshBase {
+export class PullToRefresh extends common.PullToRefreshBase {
   private _handler: PullToRefreshHandler;
 
   // NOTE: We cannot use the default ios property as the UIRefreshControl can be added only to UIScrollViews!
@@ -103,10 +98,10 @@ export class PullToRefresh extends PullToRefreshBase {
     }
   }
 
-  [refreshingProperty.getDefault](): boolean {
+  [common.refreshingProperty.getDefault](): boolean {
     return false;
   }
-  [refreshingProperty.setNative](value: boolean) {
+  [common.refreshingProperty.setNative](value: boolean) {
     if (value) {
       this.refreshControl.beginRefreshing();
     } else {
@@ -114,21 +109,49 @@ export class PullToRefresh extends PullToRefreshBase {
     }
   }
 
-  [colorProperty.getDefault](): UIColor {
+  [common.indicatorColorProperty.getDefault](): UIColor {
     return this.refreshControl.tintColor;
   }
-  [colorProperty.setNative](value: Color | UIColor) {
-    const color = value instanceof Color ? value.ios : value;
 
+  [common.indicatorColorProperty.setNative](value: Color) {
+    const color = value ? value.ios : this.color;
     this.refreshControl.tintColor = color;
   }
 
-  [backgroundColorProperty.getDefault](): UIColor {
+  [common.indicatorColorStyleProperty.getDefault](): UIColor {
+    return this.refreshControl.tintColor;
+  }
+
+  [common.indicatorColorStyleProperty.setNative](value: Color) {
+    // Inline property has priority
+    if (this.indicatorColor)
+    {
+      return;
+    }
+    const color = value ? value.ios : this.color;
+    this.refreshControl.tintColor = color;
+  }
+
+  [common.indicatorFillColorProperty.getDefault](): UIColor {
     return this.refreshControl.backgroundColor;
   }
-  [backgroundColorProperty.setNative](value: Color | UIColor) {
-    const color = value instanceof Color ? value.ios : value;
 
+  [common.indicatorFillColorProperty.setNative](value: Color) {
+    const color = value ? value.ios : this.backgroundColor;
+    this.refreshControl.backgroundColor = color;
+  }
+
+  [common.indicatorFillColorStyleProperty.getDefault](): UIColor {
+    return this.refreshControl.backgroundColor;
+  }
+
+  [common.indicatorFillColorStyleProperty.setNative](value: Color) {
+    // Inline property has priority
+    if (this.indicatorFillColor)
+    {
+      return;
+    }
+    const color = value ? value.ios : this.backgroundColor;
     this.refreshControl.backgroundColor = color;
   }
 }
