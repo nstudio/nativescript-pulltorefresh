@@ -12,18 +12,10 @@ NativeScript plugin to use Pull to Refresh on any view.
     <a href="https://www.npmjs.com/package/@nstudio/nativescript-pulltorefresh">
         <img src="https://img.shields.io/npm/dt/@nstudio/nativescript-pulltorefresh.svg?label=npm%20downloads" alt="npm">
     </a>
-    <a href="https://github.com/nstudio/nativescript-pulltorefresh/stargazers">
-        <img src="https://img.shields.io/github/stars/nstudio/nativescript-pulltorefresh.svg" alt="stars">
-    </a>
-     <a href="https://github.com/nstudio/nativescript-pulltorefresh/network">
-        <img src="https://img.shields.io/github/forks/nstudio/nativescript-pulltorefresh.svg" alt="forks">
-    </a>
-    <a href="https://github.com/nstudio/nativescript-pulltorefresh/blob/master/LICENSE">
-        <img src="https://img.shields.io/github/license/nstudio/nativescript-pulltorefresh.svg" alt="license">
-    </a>
     <a href="https://nstudio.io">
       <img src="https://github.com/nstudio/media/blob/master/images/nstudio-banner.png?raw=true" alt="nStudio banner">
     </a>
+    <br />
     <h5 align="center">Do you need assistance on your project or plugin? Contact the nStudio team anytime at <a href="mailto:team@nstudio.io">team@nstudio.io</a> to get up to speed with the best practices in mobile and web app development.
     </h5>
 </p>
@@ -54,7 +46,7 @@ NativeScript plugin to use Pull to Refresh on any view.
 <page xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:PullRefresh="@nstudio/nativescript-pulltorefresh"
       loaded="pageLoaded">
-    <PullRefresh:PullToRefresh refresh="refreshList">
+    <PullRefresh:PullToRefresh refresh="refreshList" indicatorFillColor="#fff000" indicatorColor="#3489db">
         <list-view items="{{ users }}">
             <list-view.itemTemplate>
                 <label text="{{ name }}" row="0" col="1"textWrap="true" class="message" />
@@ -73,13 +65,13 @@ function refreshList(args) {
 
   // Do work here... and when done call set refreshing property to false to stop the refreshing
   loadItems().then(
-    resp => {
+    (resp) => {
       // ONLY USING A TIMEOUT TO SIMULATE/SHOW OFF THE REFRESHING
       setTimeout(() => {
         pullRefresh.refreshing = false;
       }, 1000);
     },
-    err => {
+    (err) => {
       pullRefresh.refreshing = false;
     }
   );
@@ -104,7 +96,11 @@ refreshList(args) {
 #### HTML
 
 ```html
-<PullToRefresh (refresh)="refreshList($event)">
+<PullToRefresh
+  (refresh)="refreshList($event)"
+  indicatorFillColor="#fff000"
+  indicatorColor="#3489db"
+>
   <ListView [items]="itemList">
     <template let-item="item">
       <label [text]="item.id"></label>
@@ -129,7 +125,11 @@ Vue.registerElement(
 ```vue
 <template>
   <Page>
-    <PullToRefresh @refresh="refreshList">
+    <PullToRefresh
+      @refresh="refreshList"
+      indicatorFillColor="#fff000"
+      indicatorColor="#3489db"
+    >
       <ListView for="item in listOfItems" @itemTap="onItemTap">
         <v-template>
           <!-- Shows the list item label in the default color and style. -->
@@ -145,11 +145,11 @@ export default {
   methods: {
     refreshList(args) {
       var pullRefresh = args.object;
-      setTimeout(function() {
+      setTimeout(function () {
         pullRefresh.refreshing = false;
       }, 1000);
-    }
-  }
+    },
+  },
 };
 </script>
 ```
@@ -159,6 +159,8 @@ export default {
 - **refresh : function** _required_
 - **refreshing: boolean** - Notifies the widget that the refresh state has
   changed.
+- **indicatorFillColor: Color** - the color of the indicator background fill.
+- **indicatorColor: Color** - the color of the indicator itself.
 
 ## [Changelog](./CHANGELOG.md)
 
