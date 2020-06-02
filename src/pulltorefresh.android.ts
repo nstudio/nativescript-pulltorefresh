@@ -1,10 +1,4 @@
-import { Color } from 'tns-core-modules/color';
-import {
-  backgroundColorProperty,
-  colorProperty,
-  PullToRefreshBase,
-  refreshingProperty
-} from './pulltorefresh-common';
+import * as common from './pulltorefresh-common';
 
 export * from './pulltorefresh-common';
 
@@ -55,7 +49,7 @@ class CarouselFriendlySwipeRefreshLayout extends SwipeRefreshLayout_Namespace.Sw
   }
 }
 
-export class PullToRefresh extends PullToRefreshBase {
+export class PullToRefresh extends common.PullToRefreshBase {
   private _androidViewId: number;
 
   public nativeView: androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -84,7 +78,7 @@ export class PullToRefresh extends PullToRefreshBase {
             if (owner) {
               owner.refreshing = true;
               owner.notify({
-                eventName: PullToRefreshBase.refreshEvent,
+                eventName: common.PullToRefreshBase.refreshEvent,
                 object: owner
               });
             }
@@ -102,7 +96,7 @@ export class PullToRefresh extends PullToRefreshBase {
           if (owner) {
             owner.refreshing = true;
             owner.notify({
-              eventName: PullToRefreshBase.refreshEvent,
+              eventName: common.PullToRefreshBase.refreshEvent,
               object: owner
             });
           }
@@ -129,20 +123,40 @@ export class PullToRefresh extends PullToRefreshBase {
     super.disposeNativeView();
   }
 
-  [refreshingProperty.getDefault](): boolean {
+  [common.refreshingProperty.getDefault](): boolean {
     return false;
   }
-  [refreshingProperty.setNative](value: boolean) {
+  [common.refreshingProperty.setNative](value: boolean) {
     this.nativeView.setRefreshing(value);
   }
 
-  [colorProperty.setNative](value: Color | number) {
-    const color = value instanceof Color ? value.android : value;
+  [common.indicatorColorProperty.setNative](value: any) {
+    const color = value ? value.android : this.color;
     this.nativeView.setColorSchemeColors([color]);
   }
 
-  [backgroundColorProperty.setNative](value: Color | number) {
-    const color = value instanceof Color ? value.android : value;
+  [common.indicatorColorStyleProperty.setNative](value: any) {
+    // Inline property has priority
+    if ((this as any).indicatorColor)
+    {
+      return;
+    }
+    const color = value ? value.android : this.color;
+    this.nativeView.setColorSchemeColors([color]);
+  }
+
+  [common.indicatorFillColorProperty.setNative](value: any) {
+    const color = value ? value.android : this.backgroundColor;
+    this.nativeView.setProgressBackgroundColorSchemeColor(color);
+  }
+
+  [common.indicatorFillColorStyleProperty.setNative](value: any) {
+    // Inline property has priority
+    if ((this as any).indicatorFillColor)
+    {
+      return;
+    }
+    const color = value ? value.android : this.backgroundColor;
     this.nativeView.setProgressBackgroundColorSchemeColor(color);
   }
 }
