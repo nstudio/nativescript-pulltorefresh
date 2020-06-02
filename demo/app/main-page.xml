@@ -8,7 +8,7 @@
     </ActionBar>
 
     <stack-layout>
-        <PullRefresh:PullToRefresh loaded="swipeLoaded" refresh="refreshList" backgroundColor="#fff000" color="#3489db">
+        <PullRefresh:PullToRefresh loaded="swipeLoaded" refresh="refreshList" indicatorFillColor="#fff000" indicatorColor="#3489db">
             <list-view items="{{ users }}" backgroundColor="white" itemTemplateSelector="$index === 0 ? 'carousel' : 'label'">
                 <list-view.itemTemplates>
                     <template key="carousel">
