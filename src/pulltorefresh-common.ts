@@ -1,11 +1,5 @@
-import { Color } from 'tns-core-modules/color';
-import { ContentView } from 'tns-core-modules/ui/content-view';
-import { CssProperty, Property } from 'tns-core-modules/ui/core/properties';
-import { View } from 'tns-core-modules/ui/core/view';
-import { Style } from 'tns-core-modules/ui/styling/style';
+import { Color, ContentView, CssProperty, Property, View, Style } from '@nativescript/core';
 import { PullToRefresh as PullToRefreshDefinition } from '.';
-
-export * from 'tns-core-modules/ui/content-view';
 
 export class PullToRefreshBase extends ContentView
   implements PullToRefreshDefinition {

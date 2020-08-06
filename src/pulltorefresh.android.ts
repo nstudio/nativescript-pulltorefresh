@@ -12,6 +12,7 @@ function useAndroidX() {
   return global.androidx && androidx.swiperefreshlayout;
 }
 
+@NativeClass()
 class CarouselFriendlySwipeRefreshLayout extends SwipeRefreshLayout_Namespace.SwipeRefreshLayout {
   private _touchSlop: number;
   private _previousX: number;

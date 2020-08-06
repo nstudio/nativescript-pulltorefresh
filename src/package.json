@@ -1,6 +1,6 @@
 {
   "name": "@nstudio/nativescript-pulltorefresh",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "A NativeScript plugin to provide the Pull to Refresh control on any view.",
   "main": "pulltorefresh",
   "typings": "index.d.ts",
@@ -18,7 +18,7 @@
   },
   "scripts": {
     "tsc": "tsc -skipLibCheck",
-    "build": "npm i && tsc",
+    "build": "npm i && ts-patch install && tsc",
     "test.android": "npm i && npm run tsc && npm run tslint && cd ../demo && tns build android && tns test android --justlaunch",
     "test.ios": "npm i && npm run tsc && npm run tslint && cd ../demo && tns build ios && tns test ios --justlaunch",
     "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\" --exclude \"*demo*/platforms/**\"",
@@ -68,14 +68,16 @@
   "bugs": "https://github.com/nstudio/nativescript-pulltorefresh/issues",
   "homepage": "https://github.com/nstudio/nativescript-pulltorefresh",
   "devDependencies": {
-    "husky": "^3.0.0",
-    "lint-staged": "^9.1.0",
-    "prettier": "^1.19.0",
-    "tns-core-modules": "~6.2.0",
-    "tns-platform-declarations": "~6.2.0",
-    "nativescript-ui-listview": "~8.0.1",
-    "rimraf": "^2.6.3",
-    "tslint": "~5.20.0",
-    "typescript": "~3.5.3"
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "@nativescript/core": "rc",
+    "@nativescript/types": "rc",
+    "@nativescript/webpack": "~2.1.3",
+    "nativescript-ui-listview": "rc",
+    "rimraf": "^3.0.2",
+    "tslint": "~6.1.3",
+    "typescript": "~3.9.0",
+    "ts-patch": "~1.3.0"
   }
 }

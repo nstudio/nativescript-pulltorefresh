@@ -1,8 +1,9 @@
-import { ios as iosUtils } from 'tns-core-modules/utils/utils';
+import { Utils } from '@nativescript/core';
 import * as common from './pulltorefresh-common';
 
 export * from './pulltorefresh-common';
 
+@NativeClass()
 class PullToRefreshHandler extends NSObject {
   public static ObjCExposedMethods = {
     handleRefresh: { returns: interop.types.void, params: [UIRefreshControl] }
@@ -28,7 +29,7 @@ class PullToRefreshHandler extends NSObject {
   }
 }
 
-const SUPPORT_REFRESH_CONTROL = iosUtils.MajorVersion >= 10;
+const SUPPORT_REFRESH_CONTROL = Utils.ios.MajorVersion >= 10;
 
 export class PullToRefresh extends common.PullToRefreshBase {
   private _handler: PullToRefreshHandler;
