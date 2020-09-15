@@ -10,6 +10,7 @@ screens/
 references.d.ts
 tsconfig.json
 *.map
+*.tgz
 
 ## Dont IGNORE
 !index.d.ts
