@@ -12,19 +12,23 @@ NativeScript plugin to use Pull to Refresh on any view.
     <a href="https://www.npmjs.com/package/@nstudio/nativescript-pulltorefresh">
         <img src="https://img.shields.io/npm/dt/@nstudio/nativescript-pulltorefresh.svg?label=npm%20downloads" alt="npm">
     </a>
-    <a href="https://nstudio.io">
-      <img src="https://github.com/nstudio/media/blob/master/images/nstudio-banner.png?raw=true" alt="nStudio banner">
-    </a>
-    <br />
-    <h5 align="center">Do you need assistance on your project or plugin? Contact the nStudio team anytime at <a href="mailto:team@nstudio.io">team@nstudio.io</a> to get up to speed with the best practices in mobile and web app development.
-    </h5>
 </p>
 
 ---
 
 ## Installation
 
-`tns plugin add @nstudio/nativescript-pulltorefresh`
+#### NativeScript 7+:
+
+```bash
+ns plugin add @nstudio/nativescript-pulltorefresh
+```
+
+#### NativeScript prior to 7:
+
+```bash
+tns plugin add @nstudio/nativescript-pulltorefresh@2.1.0
+```
 
 #### [Android - _SwipeRefreshLayout_](http://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html)
 

@@ -3,7 +3,7 @@
 ```
 git clone https://github.com/nstudio/nativescript-pulltorefresh.git
 cd nativescript-pulltorefresh/src
-npm run setup
+npm run build
 
 npm run demo.ios
 

@@ -55,9 +55,9 @@ export class PullToRefresh extends common.PullToRefreshBase {
 
   public nativeView: androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-  get android(): androidx.swiperefreshlayout.widget.SwipeRefreshLayout {
-    return this.nativeView;
-  }
+  // get android(): androidx.swiperefreshlayout.widget.SwipeRefreshLayout {
+  //   return this.nativeView;
+  // }
 
   public createNativeView() {
     const swipeRefreshLayout = new (CarouselFriendlySwipeRefreshLayout as any)(
@@ -80,10 +80,10 @@ export class PullToRefresh extends common.PullToRefreshBase {
               owner.refreshing = true;
               owner.notify({
                 eventName: common.PullToRefreshBase.refreshEvent,
-                object: owner
+                object: owner,
               });
             }
-          }
+          },
         }
       );
       swipeRefreshLayout.setOnRefreshListener(androidXListener);
@@ -98,10 +98,10 @@ export class PullToRefresh extends common.PullToRefreshBase {
             owner.refreshing = true;
             owner.notify({
               eventName: common.PullToRefreshBase.refreshEvent,
-              object: owner
+              object: owner,
             });
           }
-        }
+        },
       });
       swipeRefreshLayout.setOnRefreshListener(supportListener);
       (swipeRefreshLayout as any).refreshListener = supportListener;
@@ -138,8 +138,7 @@ export class PullToRefresh extends common.PullToRefreshBase {
 
   [common.indicatorColorStyleProperty.setNative](value: any) {
     // Inline property has priority
-    if ((this as any).indicatorColor)
-    {
+    if ((this as any).indicatorColor) {
       return;
     }
     const color = value ? value.android : this.color;
@@ -153,8 +152,7 @@ export class PullToRefresh extends common.PullToRefreshBase {
 
   [common.indicatorFillColorStyleProperty.setNative](value: any) {
     // Inline property has priority
-    if ((this as any).indicatorFillColor)
-    {
+    if ((this as any).indicatorFillColor) {
       return;
     }
     const color = value ? value.android : this.backgroundColor;

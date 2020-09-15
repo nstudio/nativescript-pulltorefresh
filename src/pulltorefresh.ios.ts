@@ -6,7 +6,7 @@ export * from './pulltorefresh-common';
 @NativeClass()
 class PullToRefreshHandler extends NSObject {
   public static ObjCExposedMethods = {
-    handleRefresh: { returns: interop.types.void, params: [UIRefreshControl] }
+    handleRefresh: { returns: interop.types.void, params: [UIRefreshControl] },
   };
 
   private _owner: WeakRef<PullToRefresh>;
@@ -24,7 +24,7 @@ class PullToRefreshHandler extends NSObject {
     pullToRefresh.refreshing = true;
     pullToRefresh.notify({
       eventName: common.PullToRefreshBase.refreshEvent,
-      object: pullToRefresh
+      object: pullToRefresh,
     });
   }
 }
@@ -124,8 +124,7 @@ export class PullToRefresh extends common.PullToRefreshBase {
 
   [common.indicatorColorStyleProperty.setNative](value: any) {
     // Inline property has priority
-    if ((this as any).indicatorColor)
-    {
+    if ((this as any).indicatorColor) {
       return;
     }
     const color = value ? value.ios : this.color;
@@ -147,8 +146,7 @@ export class PullToRefresh extends common.PullToRefreshBase {
 
   [common.indicatorFillColorStyleProperty.setNative](value: any) {
     // Inline property has priority
-    if ((this as any).indicatorFillColor)
-    {
+    if ((this as any).indicatorFillColor) {
       return;
     }
     const color = value ? value.ios : this.backgroundColor;
