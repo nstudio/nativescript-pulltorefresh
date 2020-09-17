@@ -1,12 +1,13 @@
 {
   "dependencies": {
-    "nativescript-carousel": "./nativescript-carousel-4.3.0.tgz",
+    "nativescript-carousel": "^7.0.0",
     "@nstudio/nativescript-pulltorefresh": "file:../src",
     "nativescript-theme-core": "^1.0.4",
     "nativescript-unit-test-runner": "0.7.0",
     "@nativescript/core": "~7.0.0"
   },
   "devDependencies": {
+    "@nativescript/android": "7.0.0",
     "@nativescript/ios": "7.0.0",
     "@nativescript/types": "~7.0.3",
     "@nativescript/webpack": "~3.0.4",
@@ -15,8 +16,8 @@
     "karma-jasmine": "2.0.1",
     "karma-nativescript-launcher": "0.4.0",
     "karma-webpack": "3.0.5",
-    "tslint": "~5.13.1",
-    "typescript": "3.9.7"
+    "tslint": "~6.1.3",
+    "typescript": "~3.9.7"
   },
   "scripts": {
     "build.plugin": "cd ../src && npm run build",
