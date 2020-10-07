@@ -27,7 +27,7 @@ ns plugin add @nstudio/nativescript-pulltorefresh
 #### NativeScript prior to 7:
 
 ```bash
-tns plugin add @nstudio/nativescript-pulltorefresh@2.1.0
+tns plugin add @nstudio/nativescript-pulltorefresh@2.0.0
 ```
 
 #### [Android - _SwipeRefreshLayout_](http://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html)
